@@ -792,12 +792,12 @@ namespace eureka_plotter_car {
                 if (
                     (pins.analogReadPin(AnalogPin.P1) / 1023) * 100 < sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 < sikii) {
                     io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue));
-                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue));
+                    io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue));
                     io_neo.show()
                     return true;
                 } else {
                     io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red));
-                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red));
+                    io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red));
                     io_neo.show()
                     return false;
                 }
@@ -807,8 +807,12 @@ namespace eureka_plotter_car {
 
                 if (
                     (pins.analogReadPin(AnalogPin.P1) / 1023) * 100 > sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 > sikii) {
+                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red));
+                    io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red));
                     return true;
                 } else {
+                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue));
+                    io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue));
                     return false;
                 }
                 break;
