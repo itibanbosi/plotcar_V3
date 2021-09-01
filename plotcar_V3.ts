@@ -681,34 +681,14 @@ namespace eureka_plotter_car {
     //% color="#f071bd" weight=30 blockId=auto_photo_R block="右ﾌｫﾄﾘﾌﾚｸﾀｰ" group="7 ﾌｫﾄﾘﾌﾚｸﾀｰ"
     //% advanced=true
     export function phto_R() {
-        if (eureka_plotter_car.phto_R() < 30) {
-            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
-        } else {
-            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
-        }
-        if (eureka_plotter_car.phto_L() < 30) {
-            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
-        } else {
-            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
-        }
-        io_neo.show()
+
         return Math.round((pins.analogReadPin(AnalogPin.P10) / 1023) * 100);
     }
 
     //% color="#f071bd" weight=28 blockId=auto_photo_L block="左ﾌｫﾄﾘﾌﾚｸﾀｰ" group="7 ﾌｫﾄﾘﾌﾚｸﾀｰ"
     //% advanced=true
     export function phto_L() {
-        if (eureka_plotter_car.phto_R() < 30) {
-            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
-        } else {
-            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
-        }
-        if (eureka_plotter_car.phto_L() < 30) {
-            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
-        } else {
-            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
-        }
-        io_neo.show()
+
         return Math.round((pins.analogReadPin(AnalogPin.P1) / 1023) * 100);
     }
 
