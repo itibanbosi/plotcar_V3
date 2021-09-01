@@ -681,12 +681,34 @@ namespace eureka_plotter_car {
     //% color="#f071bd" weight=30 blockId=auto_photo_R block="右ﾌｫﾄﾘﾌﾚｸﾀｰ" group="7 ﾌｫﾄﾘﾌﾚｸﾀｰ"
     //% advanced=true
     export function phto_R() {
+        if (eureka_plotter_car.phto_R() < 30) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < 30) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+        io_neo.show()
         return Math.round((pins.analogReadPin(AnalogPin.P10) / 1023) * 100);
     }
 
     //% color="#f071bd" weight=28 blockId=auto_photo_L block="左ﾌｫﾄﾘﾌﾚｸﾀｰ" group="7 ﾌｫﾄﾘﾌﾚｸﾀｰ"
     //% advanced=true
     export function phto_L() {
+        if (eureka_plotter_car.phto_R() < 30) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < 30) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+        io_neo.show()
         return Math.round((pins.analogReadPin(AnalogPin.P1) / 1023) * 100);
     }
 
@@ -694,6 +716,17 @@ namespace eureka_plotter_car {
     //% advanced=true
     //% limit_R.min=0 limit_R.max=100
     export function photo_R(limit_R: number): boolean {
+        if (eureka_plotter_car.phto_R() < 30) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < 30) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+        io_neo.show()
         if ((pins.analogReadPin(AnalogPin.P10) / 1023) * 100 < limit_R) {
             return true;
         } else {
@@ -705,6 +738,18 @@ namespace eureka_plotter_car {
     //% limit_L.min=0 limit_L.max=100
     //% advanced=true
     export function photo_L(limit_L: number): boolean {
+        if (eureka_plotter_car.phto_R() < 30) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < 30) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+        io_neo.show()
+
         if ((pins.analogReadPin(AnalogPin.P1) / 1023) * 100 < limit_L) {
             return true;
         } else {
@@ -717,14 +762,26 @@ namespace eureka_plotter_car {
     //% advanced=true
     export function photo_R_out(wb: whiteblack, sikii: sence_select): boolean {
         if (sikii == sence_select.低感度) {
-            sikii = 30;
+            sikii = 40;
         }
         if (sikii == sence_select.普通) {
-            sikii = 20;
+            sikii = 30;
         }
         if (sikii == sence_select.高感度) {
-            sikii = 10;
+            sikii = 20;
         }
+        if (eureka_plotter_car.phto_R() < 30) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < 30) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+        io_neo.show()
+
         switch (wb) {
             case whiteblack.黒:
                 if ((pins.analogReadPin(AnalogPin.P1) / 1023) * 100 > sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 < sikii) {
@@ -747,14 +804,25 @@ namespace eureka_plotter_car {
     //% advanced=true
     export function photo_L_out(wb: whiteblack, sikii: sence_select): boolean {
         if (sikii == sence_select.低感度) {
-            sikii = 30;
+            sikii = 40;
         }
         if (sikii == sence_select.普通) {
-            sikii = 20;
+            sikii = 30;
         }
         if (sikii == sence_select.高感度) {
-            sikii = 10;
+            sikii = 20;
         }
+        if (eureka_plotter_car.phto_R() < 30) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < 30) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+        io_neo.show()
         switch (wb) {
             case whiteblack.黒:
                 if (
@@ -778,15 +846,25 @@ namespace eureka_plotter_car {
     //% advanced=true
     export function photo_LR_out(wb: whiteblack, sikii: sence_select): boolean {
         if (sikii == sence_select.低感度) {
-            sikii = 30;
+            sikii = 40;
         }
         if (sikii == sence_select.普通) {
-            sikii = 20;
+            sikii = 30;
         }
         if (sikii == sence_select.高感度) {
-            sikii = 10;
+            sikii = 20;
         }
-
+        if (eureka_plotter_car.phto_R() < 30) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < 30) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+        io_neo.show()
         switch (wb) {
             case whiteblack.黒:
                 if (
