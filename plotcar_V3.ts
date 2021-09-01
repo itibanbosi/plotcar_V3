@@ -725,6 +725,17 @@ namespace eureka_plotter_car {
         if (sikii == sence_select.高感度) {
             sikii = 10;
         }
+        if (eureka_plotter_car.phto_R() < sikii) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < sikii) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+        
         switch (wb) {
             case whiteblack.黒:
                 if ((pins.analogReadPin(AnalogPin.P1) / 1023) * 100 > sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 < sikii) {
@@ -755,6 +766,17 @@ namespace eureka_plotter_car {
         if (sikii == sence_select.高感度) {
             sikii = 10;
         }
+        if (eureka_plotter_car.phto_R() < sikii) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < sikii) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+
         switch (wb) {
             case whiteblack.黒:
                 if (
