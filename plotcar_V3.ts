@@ -778,21 +778,21 @@ namespace eureka_plotter_car {
     //% advanced=true
     export function photo_LR_out(wb: whiteblack, sikii: sence_select): boolean {
         if (sikii == sence_select.低感度) {
-            sikii = 30;
+            sikii = 40;
         }
         if (sikii == sence_select.普通) {
-            sikii = 20;
+            sikii = 30;
         }
         if (sikii == sence_select.高感度) {
-            sikii = 10;
+            sikii = 20;
         }
-        if (eureka_plotter_car.phto_R() < 30) {
-            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+        if (eureka_plotter_car.phto_R() < sikii) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
         }
-        if (eureka_plotter_car.phto_L() < 30) {
-            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
+        if (eureka_plotter_car.phto_L() < sikii) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
         }
