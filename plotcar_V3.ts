@@ -791,8 +791,12 @@ namespace eureka_plotter_car {
             case whiteblack.黒:
                 if (
                     (pins.analogReadPin(AnalogPin.P1) / 1023) * 100 < sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 < sikii) {
+                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue));
+                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue));
+                    io_neo.show()
                     return true;
                 } else {
+
                     return false;
                 }
                 break;
