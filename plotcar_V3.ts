@@ -735,7 +735,7 @@ namespace eureka_plotter_car {
         } else {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
         }
-        
+        io_neo.show()
         switch (wb) {
             case whiteblack.黒:
                 if ((pins.analogReadPin(AnalogPin.P1) / 1023) * 100 > sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 < sikii) {
@@ -776,7 +776,7 @@ namespace eureka_plotter_car {
         } else {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
         }
-
+        io_neo.show()
         switch (wb) {
             case whiteblack.黒:
                 if (
