@@ -796,7 +796,9 @@ namespace eureka_plotter_car {
                     io_neo.show()
                     return true;
                 } else {
-
+                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red));
+                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red));
+                    io_neo.show()
                     return false;
                 }
                 break;
