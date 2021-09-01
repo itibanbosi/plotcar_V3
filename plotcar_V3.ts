@@ -696,12 +696,12 @@ namespace eureka_plotter_car {
     //% advanced=true
     //% limit_R.min=0 limit_R.max=100
     export function photo_R(limit_R: number): boolean {
-        if (eureka_plotter_car.phto_R() < limit_R) {
+        if (eureka_plotter_car.phto_R() <= limit_R) {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
         }
-        if (eureka_plotter_car.phto_L() < limit_R) {
+        if (eureka_plotter_car.phto_L() <= limit_R) {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
@@ -718,12 +718,12 @@ namespace eureka_plotter_car {
     //% limit_L.min=0 limit_L.max=100
     //% advanced=true
     export function photo_L(limit_L: number): boolean {
-        if (eureka_plotter_car.phto_R() < limit_L) {
+        if (eureka_plotter_car.phto_R() <= limit_L) {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
         }
-        if (eureka_plotter_car.phto_L() < limit_L) {
+        if (eureka_plotter_car.phto_L() <= limit_L) {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
@@ -749,12 +749,12 @@ namespace eureka_plotter_car {
         if (sikii == sence_select.高感度) {
             sikii = 10;
         }
-        if (eureka_plotter_car.phto_R() < sikii) {
+        if (eureka_plotter_car.phto_R() <= sikii) {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
         }
-        if (eureka_plotter_car.phto_L() < sikii) {
+        if (eureka_plotter_car.phto_L() <= sikii) {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
@@ -790,12 +790,12 @@ namespace eureka_plotter_car {
         if (sikii == sence_select.高感度) {
             sikii = 10;
         }
-        if (eureka_plotter_car.phto_R() < sikii) {
+        if (eureka_plotter_car.phto_R() <= sikii) {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
         }
-        if (eureka_plotter_car.phto_L() < sikii) {
+        if (eureka_plotter_car.phto_L() <= sikii) {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
@@ -832,12 +832,12 @@ namespace eureka_plotter_car {
         if (sikii == sence_select.高感度) {
             sikii = 20;
         }
-        if (eureka_plotter_car.phto_R() < sikii) {
+        if (eureka_plotter_car.phto_R() <= sikii) {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
         }
-        if (eureka_plotter_car.phto_L() < sikii) {
+        if (eureka_plotter_car.phto_L() <= sikii) {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Green))
         } else {
             io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
@@ -846,7 +846,7 @@ namespace eureka_plotter_car {
         switch (wb) {
             case whiteblack.黒:
                 if (
-                    (pins.analogReadPin(AnalogPin.P1) / 1023) * 100 < sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 < sikii) {
+                    (pins.analogReadPin(AnalogPin.P1) / 1023) * 100 <= sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 <= sikii) {
                     return true;
                 } else {
                     return false;
@@ -856,7 +856,7 @@ namespace eureka_plotter_car {
             case whiteblack.白:
 
                 if (
-                    (pins.analogReadPin(AnalogPin.P1) / 1023) * 100 > sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 > sikii) {
+                    (pins.analogReadPin(AnalogPin.P1) / 1023) * 100 >= sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 >= sikii) {
                     return true;
                 } else {
                     return false;
