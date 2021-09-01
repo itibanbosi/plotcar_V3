@@ -786,19 +786,23 @@ namespace eureka_plotter_car {
         if (sikii == sence_select.高感度) {
             sikii = 10;
         }
-
+        if (eureka_plotter_car.phto_R() < 30) {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red))
+        }
+        if (eureka_plotter_car.phto_L() < 30) {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
+        } else {
+            io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red))
+        }
+        io_neo.show()
         switch (wb) {
             case whiteblack.黒:
                 if (
                     (pins.analogReadPin(AnalogPin.P1) / 1023) * 100 < sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 < sikii) {
-                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue));
-                    io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue));
-                    io_neo.show()
                     return true;
                 } else {
-                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red));
-                    io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red));
-                    io_neo.show()
                     return false;
                 }
                 break;
@@ -807,12 +811,8 @@ namespace eureka_plotter_car {
 
                 if (
                     (pins.analogReadPin(AnalogPin.P1) / 1023) * 100 > sikii && (pins.analogReadPin(AnalogPin.P10) / 1023) * 100 > sikii) {
-                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Red));
-                    io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Red));
                     return true;
                 } else {
-                    io_neo.setPixelColor(1, neopixel.colors(NeoPixelColors.Blue));
-                    io_neo.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue));
                     return false;
                 }
                 break;
