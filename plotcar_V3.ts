@@ -206,7 +206,7 @@ let io_neo = neopixel.create(DigitalPin.P9, 4, NeoPixelMode.RGB);
 plotLED_blocks.neopixel_rainbow()
 eureka_plotter_car.plottercar_pen(pen_updown.up)
 
-//% color="#3943c6" block="ﾌﾟﾛｯﾄｶｰVer3.0" weight=95 icon="\uf1b9"
+//% color="#3943c6" block="ﾌﾟﾛｯﾄｶｰVer3.2" weight=95 icon="\uf1b9"
 namespace eureka_plotter_car {
 
     //% color="#ff3d03" weight=90 blockId=Microbit_Version_info block="ﾏｲｸﾛﾋﾞｯﾄのバージョンを設定する |%Version_info| にする" group="1 初期設定"
