@@ -1,4 +1,4 @@
-/* plot_car Ver3.1*/
+/* plot_car Ver3.2*/
 
 let wait = 0;
 let Tugi_R = 0;
@@ -611,7 +611,7 @@ namespace eureka_plotter_car {
         let d1 = 0;
         let d2 = 0;
 
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 5; i++) {
             // send
             basic.pause(5);
             pins.setPull(DigitalPin.P2, PinPullMode.PullNone);
@@ -624,7 +624,7 @@ namespace eureka_plotter_car {
             d1 = pins.pulseIn(DigitalPin.P0, PulseValue.High, 500 * 58);
             d2 = d2 + d1;
         }
-        return Math.round(Math.idiv(d2 / 2, 58) * 1.5);
+        return Math.round(Math.idiv(d2 / 5, 58) * 1.5);
     }
 
     /*
@@ -639,14 +639,16 @@ namespace eureka_plotter_car {
 
 
 
-    //% color="#009A00" weight=30 block="きょりが |%limit| cmより |%nagasa| " group="6 超音波きょりｾﾝｻｰ"
-    //% limit.min=0 limit.max=30
+    //% color="#009A00" weight=30 block="（※最小8cm）きょりが |%limit| cmより |%nagasa| " group="6 超音波きょりｾﾝｻｰ"
+    //% limit.min=8 limit.max=30
     //% advanced=true
     export function sonar_ping_3(limit: number, nagasa: kyori): boolean {
         let d1 = 0;
         let d2 = 0;
-
-        for (let i = 0; i < 2; i++) {
+        if (limit < 8 ){
+            limit = 8
+        } 
+        for (let i = 0; i < 5; i++) {
             // send
             basic.pause(5);
             pins.setPull(DigitalPin.P2, PinPullMode.PullNone);
@@ -661,14 +663,14 @@ namespace eureka_plotter_car {
         }
         switch (nagasa) {
             case kyori.短い:
-                if (Math.idiv(d2 / 2, 58) * 1.5 < limit) {
+                if (Math.idiv(d2 / 5, 58) * 1.5 < limit) {
                     return true;
                 } else {
                     return false;
                 }
                 break;
             case kyori.長い:
-                if (Math.idiv(d2 / 2, 58) * 1.5 < limit) {
+                if (Math.idiv(d2 / 5, 58) * 1.5 < limit) {
                     return false;
                 } else {
                     return true;
