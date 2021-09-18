@@ -191,7 +191,7 @@ let Stepping_L = [
 ];
 
 
-/*led.enable(false)*/
+led.enable(false)
 pins.digitalWritePin(DigitalPin.P3, 0)
 pins.digitalWritePin(DigitalPin.P4, 0)
 pins.digitalWritePin(DigitalPin.P6, 0)
