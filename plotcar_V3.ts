@@ -345,7 +345,7 @@ namespace eureka_plotter_car {
 
         /*  バックラッシュの処理　右車輪 */
         if (PremotionR != R_zengo) {
-            music.playTone(523, music.beat(BeatFraction.Sixteenth))
+            /*music.playTone(523, music.beat(BeatFraction.Sixteenth))*/
             for (let index = 0; index < 3; index++) {
                 let Data1 = 0;
                 while (Data1 < 4) {
@@ -364,7 +364,7 @@ namespace eureka_plotter_car {
 
         /*  バックラッシュの処理　左車輪 */
         if (PremotionL != L_zengo) {
-            music.playTone(523, music.beat(BeatFraction.Sixteenth))
+            /*music.playTone(523, music.beat(BeatFraction.Sixteenth))*/
             for (let index = 0; index < 3; index++) {
                 let Data1 = 0;
                 while (Data1 < 4) {
