@@ -241,7 +241,7 @@ namespace eureka_plotter_car {
 
 
         /* 前回の動作との比較と処理  */
-        serial.writeValue("1Tugi_L", Tugi_L);
+        /*serial.writeValue("1Tugi_L", Tugi_L);*/
         if (PremotionR == R_zengo) {
             Tugi_R = Tugi_R + 1;
         }
