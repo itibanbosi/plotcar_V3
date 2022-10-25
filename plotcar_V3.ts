@@ -367,11 +367,10 @@ namespace eureka_plotter_car {
             for (let index = 0; index < 3; index++) {
                 let Data1 = 0;
                 while (Data1 < 4) {
-                    pins.digitalWritePin(DigitalPin.P3, Stepping_R[Data1][0]);
-                    pins.digitalWritePin(DigitalPin.P4, Stepping_R[Data1][1]);
-                    pins.digitalWritePin(DigitalPin.P6, Stepping_R[Data1][2]);
-                    pins.digitalWritePin(DigitalPin.P7, Stepping_R[Data1][3]);
-                    Data1 = Data1 + 1;
+                    for (let n = 0; n < 4; n++) {
+                        pins.digitalWritePin(outputs[n], Stepping_R[Data1][0])
+                        Data1 = Data1 + 1;
+                    }
                     for (i = 0; i < microbit_wait; i++);
                     {
                     }
@@ -386,11 +385,10 @@ namespace eureka_plotter_car {
             for (let index = 0; index < 3; index++) {
                 let Data1 = 0;
                 while (Data1 < 4) {
-                    pins.digitalWritePin(DigitalPin.P13, Stepping_L[Data1][0]);
-                    pins.digitalWritePin(DigitalPin.P14, Stepping_L[Data1][1]);
-                    pins.digitalWritePin(DigitalPin.P15, Stepping_L[Data1][2]);
-                    pins.digitalWritePin(DigitalPin.P16, Stepping_L[Data1][3]);
-                    Data1 = Data1 + 1;
+                    for (let n = 4; n < 8; n++) {
+                        pins.digitalWritePin(outputs[n], Stepping_L[Data1][0])
+                        Data1 = Data1 + 1;
+                    }
                     for (i = 0; i < microbit_wait; i++);
                     {
                     }
@@ -404,14 +402,12 @@ namespace eureka_plotter_car {
             let Data1 = 0;
             while (Data1 < 4) {
 
-                pins.digitalWritePin(DigitalPin.P3, Stepping_R[Data1][0]);
-                pins.digitalWritePin(DigitalPin.P13, Stepping_L[Data1][0]);
-                pins.digitalWritePin(DigitalPin.P4, Stepping_R[Data1][1]);
-                pins.digitalWritePin(DigitalPin.P14, Stepping_L[Data1][1]);
-                pins.digitalWritePin(DigitalPin.P6, Stepping_R[Data1][2]);
-                pins.digitalWritePin(DigitalPin.P15, Stepping_L[Data1][2]);
-                pins.digitalWritePin(DigitalPin.P7, Stepping_R[Data1][3]);
-                pins.digitalWritePin(DigitalPin.P16, Stepping_L[Data1][3]);
+                for (let n = 0; n < 4; n++) {
+                    pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
+                }
+                for (let n = 4; n < 8; n++) {
+                    pins.digitalWritePin(outputs[n], Stepping_L[Data1][n-4])
+                }
                 Data1 = Data1 + 1;
                 for (i = 0; i < microbit_wait; i++);
                 {
@@ -423,15 +419,13 @@ namespace eureka_plotter_car {
         let Step_number = Math.floor(kyori_hasuu * 10 / 2.5);
         let Data1 = 0;
         while (Data1 < Step_number) {
-            serial.writeValue("Data1", Data1);
-            pins.digitalWritePin(DigitalPin.P3, Stepping_R[Data1][0]);
-            pins.digitalWritePin(DigitalPin.P13, Stepping_L[Data1][0]);
-            pins.digitalWritePin(DigitalPin.P4, Stepping_R[Data1][1]);
-            pins.digitalWritePin(DigitalPin.P14, Stepping_L[Data1][1]);
-            pins.digitalWritePin(DigitalPin.P6, Stepping_R[Data1][2]);
-            pins.digitalWritePin(DigitalPin.P15, Stepping_L[Data1][2]);
-            pins.digitalWritePin(DigitalPin.P7, Stepping_R[Data1][3]);
-            pins.digitalWritePin(DigitalPin.P16, Stepping_L[Data1][3]);
+            /*serial.writeValue("Data1", Data1);*/
+            for (let n = 0; n < 4; n++) {
+                pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
+            }
+            for (let n = 4; n < 8; n++) {
+                pins.digitalWritePin(outputs[n], Stepping_L[Data1][n - 4])
+            }
             Data1 = Data1 + 1;
             for (i = 0; i < microbit_wait; i++);
             {
