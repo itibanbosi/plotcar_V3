@@ -14,14 +14,7 @@ let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
 
-/*   let  = [
-       [0, 0, 0, 0],
-       [0, 0, 0, 0],
-       [0, 0, 0, 0],
-       [0, 0, 0, 0],
-   ];
-   
-*/
+
 let Stepping_non = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -404,9 +397,7 @@ namespace eureka_plotter_car {
 
                 for (let n = 0; n < 4; n++) {
                     pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
-                }
-                for (let n = 4; n < 8; n++) {
-                    pins.digitalWritePin(outputs[n], Stepping_L[Data1][n-4])
+                    pins.digitalWritePin(outputs[n+4], Stepping_L[Data1][n + 4])
                 }
                 Data1 = Data1 + 1;
                 for (i = 0; i < microbit_wait; i++);
@@ -422,9 +413,7 @@ namespace eureka_plotter_car {
             /*serial.writeValue("Data1", Data1);*/
             for (let n = 0; n < 4; n++) {
                 pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
-            }
-            for (let n = 4; n < 8; n++) {
-                pins.digitalWritePin(outputs[n], Stepping_L[Data1][n - 4])
+                pins.digitalWritePin(outputs[n+4], Stepping_L[Data1][n + 4])
             }
             Data1 = Data1 + 1;
             for (i = 0; i < microbit_wait; i++);
