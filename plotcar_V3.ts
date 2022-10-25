@@ -1,4 +1,4 @@
-/* Plot_car Ver4.0 2022/7/29 
+/* Plot_car Ver5.0 2022/10/25 
    eureka.niigata.jp  */
 let wait = 0;
 let Tugi_R = 0;
@@ -154,7 +154,7 @@ else {
 }
 
 
-//% color="#3943c6" block="Plotcar Ver3.6" weight=95 icon="\uf1b9"
+//% color="#3943c6" block="Plotcar Ver4" weight=95 icon="\uf1b9"
 namespace eureka_plotter_car {
 
     export enum pen_updown {
