@@ -16,7 +16,7 @@ let microbit_wait = 750;
 
 let Stepping_bit_F = 52428 /* 11001100110011001100110011001100 */
 let Stepping_bit_B = 52428 /* 10010011011011001001001101101100 */
-let original_bit = 32768     /*           000000001000000000000000 */
+let original_bit = 128     /*           000000001000000000000000 */
 let stepping_bit_R = 0;
 let stepping_bit_L = 0;
 /*
@@ -346,20 +346,21 @@ namespace eureka_plotter_car {
             while (Data1 < 4) {
 
                 for (let n = 0; n < 4; n++) {
-                    pins.digitalWritePin(outputs[0], ((stepping_bit_R << n) & original_bit) >> 15)
-                    pins.digitalWritePin(outputs[4], ((stepping_bit_L << n) & original_bit) >> 15)
-                    pins.digitalWritePin(outputs[1], ((stepping_bit_R << n) & original_bit) >> 15)
-                    pins.digitalWritePin(outputs[5], ((stepping_bit_L << n) & original_bit) >> 15)
-                    pins.digitalWritePin(outputs[2], ((stepping_bit_R << n) & original_bit) >> 15)
-                    pins.digitalWritePin(outputs[6], ((stepping_bit_L << n) & original_bit) >> 15)
-                    pins.digitalWritePin(outputs[3], ((stepping_bit_R << n) & original_bit) >> 15)
-                    pins.digitalWritePin(outputs[7], ((stepping_bit_L << n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[0], ((Stepping_bit_F << n) & original_bit) >> 7)
+                    pins.digitalWritePin(outputs[4], ((Stepping_bit_B << n) & original_bit) >> 7)
+                    pins.digitalWritePin(outputs[1], ((Stepping_bit_F << n) & original_bit) >> 7)
+                    pins.digitalWritePin(outputs[5], ((Stepping_bit_B << n) & original_bit) >> 7)
+                    pins.digitalWritePin(outputs[2], ((Stepping_bit_F << n) & original_bit) >> 7)
+                    pins.digitalWritePin(outputs[6], ((Stepping_bit_B << n) & original_bit) >> 7)
+                    pins.digitalWritePin(outputs[3], ((Stepping_bit_F << n) & original_bit) >> 7)
+                    pins.digitalWritePin(outputs[7], ((Stepping_bit_B << n) & original_bit) >> 7)
                 
-                Data1 = Data1 + 1;
+
                 for (i = 0; i < microbit_wait; i++);
                 {
                 }
                 }
+            Data1 = Data1 + 1;
             }
         }
 
