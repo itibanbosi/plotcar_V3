@@ -249,7 +249,7 @@ namespace eureka_plotter_car {
             while (Data1 < 4) {
 
                 for (let n = 0; n < 4; n++) {
-                    for (let m = 0; n<4 ;m++){
+                    for (let m = 0; m<4 ; m++){
 
                     pins.digitalWritePin(outputs[m], (((stepping_bit_L >> n) & original_bit >> m)) >> (7 - m))
                     pins.digitalWritePin(outputs[m+4], (((stepping_bit_R >> n) & original_bit >> m)) >> (7 - m))
