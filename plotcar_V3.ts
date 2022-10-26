@@ -16,7 +16,7 @@ let microbit_wait = 750;
 
 let Stepping_bit_F = 52428 /* 11001100110011001100110011001100 */
 let Stepping_bit_B = 52428 /* 10010011011011001001001101101100 */
-let original_bit = [128,64,32,16]     /*           000000001000000000000000 */
+let original_bit = 128     /*           000000001000000000000000 */
 let stepping_bit_R = 0;
 let stepping_bit_L = 0;
 /*
@@ -249,14 +249,14 @@ namespace eureka_plotter_car {
             while (Data1 < 4) {
 
                 for (let n = 0; n < 4; n++) {
-                    pins.digitalWritePin(outputs[0], (((stepping_bit_L >> n) & original_bit[0])) >> 7)
-                    pins.digitalWritePin(outputs[4], (((stepping_bit_R >> n) & original_bit[0])) >> 7)
-                    pins.digitalWritePin(outputs[1], (((stepping_bit_L >> n) & original_bit[1])) >> 6)
-                    pins.digitalWritePin(outputs[5], (((stepping_bit_R >> n) & original_bit[1])) >> 6)
-                    pins.digitalWritePin(outputs[2], (((stepping_bit_L >> n) & original_bit[2])) >> 5)
-                    pins.digitalWritePin(outputs[6], (((stepping_bit_R >> n) & original_bit[2])) >> 5)
-                    pins.digitalWritePin(outputs[3], (((stepping_bit_L >> n) & original_bit[3])) >> 4)
-                    pins.digitalWritePin(outputs[7], (((stepping_bit_R >> n) & original_bit[3])) >> 4)
+                    pins.digitalWritePin(outputs[0], (((stepping_bit_L >> n) & original_bit >> n)) >> (7 - n))
+                    pins.digitalWritePin(outputs[4], (((stepping_bit_R >> n) & original_bit >> n)) >> (7 - n))
+                    pins.digitalWritePin(outputs[1], (((stepping_bit_L >> n) & original_bit >> n)) >> (7 - n))
+                    pins.digitalWritePin(outputs[5], (((stepping_bit_R >> n) & original_bit >> n)) >> (7 - n))
+                    pins.digitalWritePin(outputs[2], (((stepping_bit_L >> n) & original_bit >> n)) >> (7 - n))
+                    pins.digitalWritePin(outputs[6], (((stepping_bit_R >> n) & original_bit >> n)) >> (7 - n))
+                    pins.digitalWritePin(outputs[3], (((stepping_bit_L >> n) & original_bit >> n)) >> (7 - n))
+                    pins.digitalWritePin(outputs[7], (((stepping_bit_R >> n) & original_bit >> n)) >> (7 - n))
                 
 
                 for (i = 0; i < microbit_wait; i++);
