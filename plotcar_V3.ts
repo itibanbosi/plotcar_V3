@@ -246,7 +246,7 @@ namespace eureka_plotter_car {
         /* 端数の計算計算  */
 
         let kyori_hasuu = kyori % 1;
-        serial.writeValue("kyori_hasuu", kyori_hasuu);
+        /*serial.writeValue("kyori_hasuu", kyori_hasuu);*/
         let kyori_seisuu = Math.floor(kyori);
         /*    serial.writeValue("kyori_seisuu", kyori_seisuu);*/
 
