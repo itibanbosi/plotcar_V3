@@ -249,14 +249,17 @@ namespace eureka_plotter_car {
             while (Data1 < 4) {
 
                 for (let n = 0; n < 4; n++) {
-                    pins.digitalWritePin(outputs[0], (((stepping_bit_L >> n) & original_bit >> 0)) >> (7 - 0))
-                    pins.digitalWritePin(outputs[4], (((stepping_bit_R >> n) & original_bit >> 0)) >> (7 - 0))
-                    pins.digitalWritePin(outputs[1], (((stepping_bit_L >> n) & original_bit >> 1)) >> (7 - 1))
+                    for (let m = 0; n<4 ;m++){
+
+                    pins.digitalWritePin(outputs[m], (((stepping_bit_L >> n) & original_bit >> m)) >> (7 - m))
+                    pins.digitalWritePin(outputs[m+4], (((stepping_bit_R >> n) & original_bit >> m)) >> (7 - m))
+/*                    pins.digitalWritePin(outputs[1], (((stepping_bit_L >> n) & original_bit >> 1)) >> (7 - 1))
                     pins.digitalWritePin(outputs[5], (((stepping_bit_R >> n) & original_bit >> 1)) >> (7 - 1))
                     pins.digitalWritePin(outputs[2], (((stepping_bit_L >> n) & original_bit >> 2)) >> (7 - 2))
                     pins.digitalWritePin(outputs[6], (((stepping_bit_R >> n) & original_bit >> 2)) >> (7 - 2))
                     pins.digitalWritePin(outputs[3], (((stepping_bit_L >> n) & original_bit >> 3)) >> (7 - 3))
                     pins.digitalWritePin(outputs[7], (((stepping_bit_R >> n) & original_bit >> 3)) >> (7 - 3))
+*/                    }
                 
 
                 for (i = 0; i < microbit_wait; i++);
