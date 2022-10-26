@@ -206,42 +206,11 @@ namespace eureka_plotter_car {
                 break;
             case 1:
                 stepping_bit_L = Stepping_bit_F
-
-                /*            if (Tugi_L == 0) {
-                                    Stepping_L = SteppingF_0
-                                }
-                                if (Tugi_L == 1) {
-                                    Stepping_L = SteppingF_1
-                                }
-                                if (Tugi_L == 2) {
-                                    Stepping_L = SteppingF_2
-                                }
-                                if (Tugi_L == 3) {
-                                    Stepping_L = SteppingF_3
-                                }
-                                */
                 break;
             case 2:
                 stepping_bit_L = Stepping_bit_B
-
-                /*            if (Tugi_L == 0) {
-                                    Stepping_L = SteppingB_0
-                                }
-                                if (Tugi_L == 1) {
-                                    Stepping_L = SteppingB_1
-                                }
-                                if (Tugi_L == 2) {
-                                    Stepping_L = SteppingB_2
-                                }
-                                if (Tugi_L == 3) {
-                                    Stepping_L = SteppingB_3
-                                }
-                                */
                 break;
         }
-
-
-
 
         /*  整数部の処理　 */
         for (let index = 0; index < kyori_seisuu; index++) {
@@ -253,15 +222,7 @@ namespace eureka_plotter_car {
 
                     pins.digitalWritePin(outputs[m], (((stepping_bit_L >> n) & original_bit >> m)) >> (7 - m))
                     pins.digitalWritePin(outputs[m+4], (((stepping_bit_R >> n) & original_bit >> m)) >> (7 - m))
-/*                    pins.digitalWritePin(outputs[1], (((stepping_bit_L >> n) & original_bit >> 1)) >> (7 - 1))
-                    pins.digitalWritePin(outputs[5], (((stepping_bit_R >> n) & original_bit >> 1)) >> (7 - 1))
-                    pins.digitalWritePin(outputs[2], (((stepping_bit_L >> n) & original_bit >> 2)) >> (7 - 2))
-                    pins.digitalWritePin(outputs[6], (((stepping_bit_R >> n) & original_bit >> 2)) >> (7 - 2))
-                    pins.digitalWritePin(outputs[3], (((stepping_bit_L >> n) & original_bit >> 3)) >> (7 - 3))
-                    pins.digitalWritePin(outputs[7], (((stepping_bit_R >> n) & original_bit >> 3)) >> (7 - 3))
-*/                    }
-                
-
+                    }
                 for (i = 0; i < microbit_wait; i++);
                 {
                 }
