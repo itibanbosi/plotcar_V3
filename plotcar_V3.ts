@@ -244,19 +244,19 @@ namespace eureka_plotter_car {
 
 
         /*  整数部の処理　 */
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < kyori_seisuu; index++) {
             let Data1 = 0;
             while (Data1 < 4) {
 
                 for (let n = 0; n < 4; n++) {
-                    pins.digitalWritePin(outputs[0], (((Stepping_bit_F >> n) & original_bit[0])) >> 7)
-                    pins.digitalWritePin(outputs[4], (((Stepping_bit_B >> n) & original_bit[0])) >> 7)
-                    pins.digitalWritePin(outputs[1], (((Stepping_bit_F >> n) & original_bit[1])) >> 6)
-                    pins.digitalWritePin(outputs[5], (((Stepping_bit_B >> n) & original_bit[1])) >> 6)
-                    pins.digitalWritePin(outputs[2], (((Stepping_bit_F >> n) & original_bit[2])) >> 5)
-                    pins.digitalWritePin(outputs[6], (((Stepping_bit_B >> n) & original_bit[2])) >> 5)
-                    pins.digitalWritePin(outputs[3], (((Stepping_bit_F >> n) & original_bit[3])) >> 4)
-                    pins.digitalWritePin(outputs[7], (((Stepping_bit_B >> n) & original_bit[3])) >> 4)
+                    pins.digitalWritePin(outputs[0], (((stepping_bit_L >> n) & original_bit[0])) >> 7)
+                    pins.digitalWritePin(outputs[4], (((stepping_bit_R >> n) & original_bit[0])) >> 7)
+                    pins.digitalWritePin(outputs[1], (((stepping_bit_L >> n) & original_bit[1])) >> 6)
+                    pins.digitalWritePin(outputs[5], (((stepping_bit_R >> n) & original_bit[1])) >> 6)
+                    pins.digitalWritePin(outputs[2], (((stepping_bit_L >> n) & original_bit[2])) >> 5)
+                    pins.digitalWritePin(outputs[6], (((stepping_bit_R >> n) & original_bit[2])) >> 5)
+                    pins.digitalWritePin(outputs[3], (((stepping_bit_L >> n) & original_bit[3])) >> 4)
+                    pins.digitalWritePin(outputs[7], (((stepping_bit_R >> n) & original_bit[3])) >> 4)
                 
 
                 for (i = 0; i < microbit_wait; i++);
