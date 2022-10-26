@@ -16,7 +16,7 @@ let microbit_wait = 750;
 
 let Stepping_bit_F = 0xCCCCCCCC /* 11001100110011001100110011001100 */
 let Stepping_bit_B = 0x936C936C /* 10010011011011001001001101101100 */
-let original_bit = 0x8000     /* 0000000010000000 */
+let original_bit = 0x8000     /*           000000001000000000000000 */
 let stepping_bit_R = 0;
 let stepping_bit_L = 0;
 /*
@@ -346,8 +346,14 @@ namespace eureka_plotter_car {
             while (Data1 < 4) {
 
                 for (let n = 0; n < 4; n++) {
-                    pins.digitalWritePin(outputs[n], ((stepping_bit_R >> n) & original_bit) >> 15)
-                    pins.digitalWritePin(outputs[n + 4], ((stepping_bit_L >> n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[0], ((stepping_bit_R << n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[4], ((stepping_bit_L << n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[1], ((stepping_bit_R << n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[5], ((stepping_bit_L << n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[2], ((stepping_bit_R << n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[6], ((stepping_bit_L << n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[3], ((stepping_bit_R << n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[7], ((stepping_bit_L << n) & original_bit) >> 15)
                 }
                 Data1 = Data1 + 1;
                 for (i = 0; i < microbit_wait; i++);
