@@ -14,7 +14,12 @@ let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
 
-
+let Stepping_bit_F = 0xCCCCCCCC /* 11001100110011001100110011001100 */
+let Stepping_bit_B = 0x936C936C /* 10010011011011001001001101101100 */
+let original_bit = 0x8000     /* 0000000010000000 */
+let stepping_bit_R = 0;
+let stepping_bit_L = 0;
+/*
 let Stepping_non = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -113,11 +118,13 @@ let Stepping_L = [
     [0, 0, 0, 0],
 ];
 
+*/
+
 //LED不使用
 led.enable(false)
 
 const outputs = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7,
- DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
+DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
 
 for (let n = 0; n < 8; n++) {
     pins.digitalWritePin(outputs[n], 0)
@@ -235,11 +242,6 @@ namespace eureka_plotter_car {
 
 
 
-
-
-
-
-
     function moter(kyori: number, R_zengo: number, L_zengo: number) {
         led.enable(false);
         let i = 0;
@@ -250,144 +252,92 @@ namespace eureka_plotter_car {
         let kyori_seisuu = Math.floor(kyori);
         /*    serial.writeValue("kyori_seisuu", kyori_seisuu);*/
 
-
-        /* forward回の動作との比較と処理  */
-        /*serial.writeValue("1Tugi_L", Tugi_L);*/
-        if (PremotionR == R_zengo) {
-            Tugi_R = Tugi_R + 1;
-        }
-        if (PremotionR > R_zengo) {
-            Tugi_R = 3 - Tugi_R + 1;
-        }
-        if (PremotionR < R_zengo) {
-            Tugi_R = 3 - Tugi_R + 1;
-        }
-
-        if (PremotionL == L_zengo) {
-            Tugi_L = Tugi_L + 1;
-        }
-        if (PremotionL > L_zengo) {
-            Tugi_L = 3 - Tugi_L + 1;
-        }
-        if (PremotionL < L_zengo) {
-            Tugi_L = 3 - Tugi_L + 1;
-        }
-
-
-        /*   次のstep*/
-        Tugi_L = (Tugi_L) % 4;
-        Tugi_R = (Tugi_R) % 4;
-
         /*右ステッピングの処理*/
         switch (R_zengo) {
             case 0:
-                Stepping_R = Stepping_non;
-                break;
-                if (Tugi_R == 0) {
-                    Stepping_R = SteppingF_0
-                }
+                stepping_bit_R = 0;
                 break;
             case 1:
-
-                if (Tugi_R == 0) {
-                    Stepping_R = SteppingB_0
-                }
-                if (Tugi_R == 1) {
-                    Stepping_R = SteppingB_1
-                }
-                if (Tugi_R == 2) {
-                    Stepping_R = SteppingB_2
-                }
-                if (Tugi_R == 3) {
-                    Stepping_R = SteppingB_3
-                }
+                stepping_bit_R = Stepping_bit_B
+                /*
+                    stepping_bit_R = (Stepping_bit_B << Tugi_R );
+    
+                    if (Tugi_R == 0) {
+                        Stepping_R = SteppingB_0
+                    }
+                    if (Tugi_R == 1) {
+                        Stepping_R = SteppingB_1
+                    }
+                    if (Tugi_R == 2) {
+                        Stepping_R = SteppingB_2
+                    }
+                    if (Tugi_R == 3) {
+                        Stepping_R = SteppingB_3
+                    }
+                    */
                 break;
             case 2:
-                if (Tugi_R == 0) {
-                    Stepping_R = SteppingF_0
-                }
-                if (Tugi_R == 1) {
-                    Stepping_R = SteppingF_1
-                }
-                if (Tugi_R == 2) {
-                    Stepping_R = SteppingF_2
-                }
-                if (Tugi_R == 3) {
-                    Stepping_R = SteppingF_3
-                }
+                stepping_bit_R = Stepping_bit_F
+
+                /*            if (Tugi_R == 0) {
+                                    Stepping_R = SteppingF_0
+                                }
+                                if (Tugi_R == 1) {
+                                    Stepping_R = SteppingF_1
+                                }
+                                if (Tugi_R == 2) {
+                                    Stepping_R = SteppingF_2
+                                }
+                                if (Tugi_R == 3) {
+                                    Stepping_R = SteppingF_3
+                                }
+                                */
                 break;
 
         }
-        Stepping_L = SteppingF_0
+
         /*左ステッピングの処理*/
         switch (L_zengo) {
             case 0:
-                Stepping_L = Stepping_non;
+                stepping_bit_L = 0;
                 break;
             case 1:
-                if (Tugi_L == 0) {
-                    Stepping_L = SteppingF_0
-                }
-                if (Tugi_L == 1) {
-                    Stepping_L = SteppingF_1
-                }
-                if (Tugi_L == 2) {
-                    Stepping_L = SteppingF_2
-                }
-                if (Tugi_L == 3) {
-                    Stepping_L = SteppingF_3
-                }
+                stepping_bit_L = Stepping_bit_F
+
+                /*            if (Tugi_L == 0) {
+                                    Stepping_L = SteppingF_0
+                                }
+                                if (Tugi_L == 1) {
+                                    Stepping_L = SteppingF_1
+                                }
+                                if (Tugi_L == 2) {
+                                    Stepping_L = SteppingF_2
+                                }
+                                if (Tugi_L == 3) {
+                                    Stepping_L = SteppingF_3
+                                }
+                                */
                 break;
             case 2:
-                if (Tugi_L == 0) {
-                    Stepping_L = SteppingB_0
-                }
-                if (Tugi_L == 1) {
-                    Stepping_L = SteppingB_1
-                }
-                if (Tugi_L == 2) {
-                    Stepping_L = SteppingB_2
-                }
-                if (Tugi_L == 3) {
-                    Stepping_L = SteppingB_3
-                }
+                stepping_bit_L = Stepping_bit_B
+
+                /*            if (Tugi_L == 0) {
+                                    Stepping_L = SteppingB_0
+                                }
+                                if (Tugi_L == 1) {
+                                    Stepping_L = SteppingB_1
+                                }
+                                if (Tugi_L == 2) {
+                                    Stepping_L = SteppingB_2
+                                }
+                                if (Tugi_L == 3) {
+                                    Stepping_L = SteppingB_3
+                                }
+                                */
                 break;
         }
 
-        /*  バックラッシュの処理　right_wheel*/
-        if (PremotionR != R_zengo) {
-            /*music.playTone(523, music.beat(BeatFraction.Sixteenth))*/
-            for (let index = 0; index < 3; index++) {
-                let Data1 = 0;
-                while (Data1 < 4) {
-                    for (let n = 0; n < 4; n++) {
-                        pins.digitalWritePin(outputs[n], Stepping_R[Data1][0])
-                        Data1 = Data1 + 1;
-                    }
-                    for (i = 0; i < microbit_wait; i++);
-                    {
-                    }
-                }
-            }
-        }
 
-
-        /*  バックラッシュの処理　left_wheel*/
-        if (PremotionL != L_zengo) {
-         /*   music.playTone(523, music.beat(BeatFraction.Sixteenth))*/
-            for (let index = 0; index < 3; index++) {
-                let Data1 = 0;
-                while (Data1 < 4) {
-                    for (let n = 4; n < 8; n++) {
-                        pins.digitalWritePin(outputs[n], Stepping_L[Data1][0])
-                        Data1 = Data1 + 1;
-                    }
-                    for (i = 0; i < microbit_wait; i++);
-                    {
-                    }
-                }
-            }
-        }
 
 
         /*  整数部の処理　 */
@@ -396,8 +346,8 @@ namespace eureka_plotter_car {
             while (Data1 < 4) {
 
                 for (let n = 0; n < 4; n++) {
-                    pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
-                    pins.digitalWritePin(outputs[n+4], Stepping_L[Data1][n])
+                    pins.digitalWritePin(outputs[n], ((stepping_bit_R >> n) & original_bit) >> 15)
+                    pins.digitalWritePin(outputs[n + 4], ((stepping_bit_L >> n) & original_bit) >> 15)
                 }
                 Data1 = Data1 + 1;
                 for (i = 0; i < microbit_wait; i++);
@@ -406,32 +356,201 @@ namespace eureka_plotter_car {
             }
         }
 
-        /* 端数分の進み方と処理  */
-        let Step_number = Math.floor(kyori_hasuu * 10 / 2.5);
-        let Data1 = 0;
-        while (Data1 < Step_number) {
-            /*serial.writeValue("Data1", Data1);*/
-            for (let n = 0; n < 4; n++) {
-                pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
-                pins.digitalWritePin(outputs[n+4], Stepping_L[Data1][n])
-            }
-            Data1 = Data1 + 1;
-            for (i = 0; i < microbit_wait; i++);
-            {
-            }
-        }
 
-        Tugi_L = (Tugi_L + Data1 - 1) % 4;
-        Tugi_R = (Tugi_R + Data1 - 1) % 4;
-
-        PremotionR = R_zengo;
-        PremotionL = L_zengo;
+        /*
+        
+        
+                /* forward回の動作との比較と処理  
+                /*serial.writeValue("1Tugi_L", Tugi_L);
+                if (PremotionR == R_zengo) {
+                    Tugi_R = Tugi_R + 1;
+                }
+                if (PremotionR > R_zengo) {
+                    Tugi_R = 3 - Tugi_R + 1;
+                }
+                if (PremotionR < R_zengo) {
+                    Tugi_R = 3 - Tugi_R + 1;
+                }
+        
+                if (PremotionL == L_zengo) {
+                    Tugi_L = Tugi_L + 1;
+                }
+                if (PremotionL > L_zengo) {
+                    Tugi_L = 3 - Tugi_L + 1;
+                }
+                if (PremotionL < L_zengo) {
+                    Tugi_L = 3 - Tugi_L + 1;
+                }
+        
+        
+                /*   次のstep
+                Tugi_L = (Tugi_L) % 4;
+                Tugi_R = (Tugi_R) % 4;
+        
+                /*右ステッピングの処理
+                switch (R_zengo) {
+                    case 0:
+                        stepping_bit_R = 0;
+                        break;
+                    case 1:
+        
+                        stepping_bit_R = (Stepping_bit_B << Tugi_R );
+        
+        /*                if (Tugi_R == 0) {
+                            Stepping_R = SteppingB_0
+                        }
+                        if (Tugi_R == 1) {
+                            Stepping_R = SteppingB_1
+                        }
+                        if (Tugi_R == 2) {
+                            Stepping_R = SteppingB_2
+                        }
+                        if (Tugi_R == 3) {
+                            Stepping_R = SteppingB_3
+                        }
+                        break;
+                    case 2:
+                        stepping_bit_R = (Stepping_bit_F >> Tugi_R );
+        
+        /*            if (Tugi_R == 0) {
+                            Stepping_R = SteppingF_0
+                        }
+                        if (Tugi_R == 1) {
+                            Stepping_R = SteppingF_1
+                        }
+                        if (Tugi_R == 2) {
+                            Stepping_R = SteppingF_2
+                        }
+                        if (Tugi_R == 3) {
+                            Stepping_R = SteppingF_3
+                        }
+                        
+                        break;
+        
+                }
+                Stepping_L = SteppingF_0
+                /*左ステッピングの処理
+                switch (L_zengo) {
+                    case 0:
+                        stepping_bit_L = 0;
+                        break;
+                    case 1:
+                        stepping_bit_L = (Stepping_bit_F >> Tugi_L );
+        
+        /*            if (Tugi_L == 0) {
+                            Stepping_L = SteppingF_0
+                        }
+                        if (Tugi_L == 1) {
+                            Stepping_L = SteppingF_1
+                        }
+                        if (Tugi_L == 2) {
+                            Stepping_L = SteppingF_2
+                        }
+                        if (Tugi_L == 3) {
+                            Stepping_L = SteppingF_3
+                        }
+                        
+                        break;
+                    case 2:
+                        stepping_bit_L = (Stepping_bit_B << Tugi_L );
+        
+        /*            if (Tugi_L == 0) {
+                            Stepping_L = SteppingB_0
+                        }
+                        if (Tugi_L == 1) {
+                            Stepping_L = SteppingB_1
+                        }
+                        if (Tugi_L == 2) {
+                            Stepping_L = SteppingB_2
+                        }
+                        if (Tugi_L == 3) {
+                            Stepping_L = SteppingB_3
+                        }
+                        
+                        break;
+                }
+        
+                /*  バックラッシュの処理　right_wheel
+                if (PremotionR != R_zengo) {
+                    /*music.playTone(523, music.beat(BeatFraction.Sixteenth))
+                    for (let index = 0; index < 3; index++) {
+                        let Data1 = 0;
+                        while (Data1 < 4) {
+                            for (let n = 0; n < 4; n++) {
+                                pins.digitalWritePin(outputs[n], ((stepping_bit_R & 128) )
+                                Data1 = Data1 + 1;
+                            }
+                            for (i = 0; i < microbit_wait; i++);
+                            {
+                            }
+                        }
+                    }
+                }
+        
+        
+                /*  バックラッシュの処理　left_wheel
+                if (PremotionL != L_zengo) {
+                 /*   music.playTone(523, music.beat(BeatFraction.Sixteenth))
+                    for (let index = 0; index < 3; index++) {
+                        let Data1 = 0;
+                        while (Data1 < 4) {
+                            for (let n = 4; n < 8; n++) {
+                                pins.digitalWritePin(outputs[n], Stepping_L[Data1][0])
+                                Data1 = Data1 + 1;
+                            }
+                            for (i = 0; i < microbit_wait; i++);
+                            {
+                            }
+                        }
+                    }
+                }
+        
+        
+                /*  整数部の処理　 
+                for (let index = 0; index < kyori_seisuu; index++) {
+                    let Data1 = 0;
+                    while (Data1 < 4) {
+        
+                        for (let n = 0; n < 4; n++) {
+                            pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
+                            pins.digitalWritePin(outputs[n+4], Stepping_L[Data1][n])
+                        }
+                        Data1 = Data1 + 1;
+                        for (i = 0; i < microbit_wait; i++);
+                        {
+                        }
+                    }
+                }
+        
+                /* 端数分の進み方と処理  
+                let Step_number = Math.floor(kyori_hasuu * 10 / 2.5);
+                let Data1 = 0;
+                while (Data1 < Step_number) {
+                    /*serial.writeValue("Data1", Data1);
+                    for (let n = 0; n < 4; n++) {
+                        pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
+                        pins.digitalWritePin(outputs[n+4], Stepping_L[Data1][n])
+                    }
+                    Data1 = Data1 + 1;
+                    for (i = 0; i < microbit_wait; i++);
+                    {
+                    }
+                }
+        
+                Tugi_L = (Tugi_L + Data1 - 1) % 4;
+                Tugi_R = (Tugi_R + Data1 - 1) % 4;
+        
+                PremotionR = R_zengo;
+                PremotionL = L_zengo;
+        
+        
+        */
 
     }
 
 
     //% color="#009CA0" weight=96 blockId=eureka_relay block="pen |%mode| " group="1 Control Pen"
-    export function plottercar_pen(mode: pen_updown) {
+    export function plotcar_pen(mode: pen_updown) {
         if (mode == pen_updown.up) {
             pins.servoWritePin(AnalogPin.P8, 90);
             basic.pause(1000);
@@ -444,7 +563,7 @@ namespace eureka_plotter_car {
     }
 
     //% color="#ff1493" weight=90 blockId=eureka_relay2 block="New_pen |%mode| " group="1 Control Pen"
-    export function plottercar_pen2(mode: pen_updown) {
+    export function plotcar_pen2(mode: pen_updown) {
         if (mode == pen_updown.up) {
             pins.servoWritePin(AnalogPin.P8, 90);
             basic.pause(1000);
@@ -456,9 +575,9 @@ namespace eureka_plotter_car {
         }
     }
 
-    //% color="#3943c6" weight=80 blockId=plottercar_zengo
+    //% color="#3943c6" weight=80 blockId=plotcar_zengo
     //% block="Move |%zengo| |%F_cm| cm" group="2 Basic control"
-    export function plottercar_zengo(zengo: plotter_houkou, F_cm: number): void {
+    export function plotcar_zengo(zengo: plotter_houkou, F_cm: number): void {
         switch (zengo) {
             case plotter_houkou.forward:
                 moter_number = F_cm / (18.9 * cond_Distance) * 512;
@@ -472,9 +591,9 @@ namespace eureka_plotter_car {
         }
     }
 
-    //% color="#3943c6" weight=76 blockId=plottercar_RL_cycle
+    //% color="#3943c6" weight=76 blockId=plotcar_RL_cycle
     //% block="Rotate |%L_degree|degrees to |%RorL|" group="2 Basic control"
-    export function plottercar_RL_cycle(RL_degree: number, RorL: plotter_RL): void {
+    export function plotcar_RL_cycle(RL_degree: number, RorL: plotter_RL): void {
         switch (RorL) {
             case plotter_RL.left:
                 moter_number = RL_degree / 360 * 512 * con_kaiten * cond_degree;
@@ -488,9 +607,9 @@ namespace eureka_plotter_car {
     }
 
 
-    //% color="#ff4940" weight=71 blockId=plottercar_rest
+    //% color="#ff4940" weight=71 blockId=plotcar_rest
     //% block="power off" group="2 Basic control"
-    export function plottercar_frest(): void {
+    export function plotcar_frest(): void {
         moter_number = 1;
         moter(moter_number, 0, 1);
     }
@@ -498,18 +617,18 @@ namespace eureka_plotter_car {
 
 
 
-    //% color="#3943c6" weight=72 blockId=plottercar_houkou
+    //% color="#3943c6" weight=72 blockId=plotcar_houkou
     //% block="change direction to|%muki|" group="2 Basic control"
-    export function plottercar_houkou(muki: houkou): void {
+    export function plotcar_houkou(muki: houkou): void {
         switch (muki) {
             case houkou.right_angle:
-                return eureka_plotter_car.plottercar_RL_cycle(90, plotter_RL.right);
+                return eureka_plotter_car.plotcar_RL_cycle(90, plotter_RL.right);
             case houkou.left_angle:
-                return eureka_plotter_car.plottercar_RL_cycle(90, plotter_RL.left);
+                return eureka_plotter_car.plotcar_RL_cycle(90, plotter_RL.left);
             case houkou.diagonal_right:
-                return eureka_plotter_car.plottercar_RL_cycle(45, plotter_RL.right);
+                return eureka_plotter_car.plotcar_RL_cycle(45, plotter_RL.right);
             case houkou.diagonal_left:
-                return eureka_plotter_car.plottercar_RL_cycle(45, plotter_RL.left);
+                return eureka_plotter_car.plotcar_RL_cycle(45, plotter_RL.left);
         }
     }
 
@@ -521,14 +640,14 @@ namespace eureka_plotter_car {
         switch (RorL) {
             case plotter_RL.right:
                 for (let index = 0; index < digree_step; index++) {
-                    eureka_plotter_car.plottercar_zengo(plotter_houkou.forward, Edge_Num)
-                    eureka_plotter_car.plottercar_RL_cycle(360 / digree_step, plotter_RL.right)
+                    eureka_plotter_car.plotcar_zengo(plotter_houkou.forward, Edge_Num)
+                    eureka_plotter_car.plotcar_RL_cycle(360 / digree_step, plotter_RL.right)
                 }
                 break;
             case plotter_RL.left:
                 for (let index = 0; index < digree_step; index++) {
-                    eureka_plotter_car.plottercar_zengo(plotter_houkou.forward, Edge_Num)
-                    eureka_plotter_car.plottercar_RL_cycle(360 / digree_step, plotter_RL.left)
+                    eureka_plotter_car.plotcar_zengo(plotter_houkou.forward, Edge_Num)
+                    eureka_plotter_car.plotcar_RL_cycle(360 / digree_step, plotter_RL.left)
                 }
                 break;
         }
@@ -543,14 +662,14 @@ namespace eureka_plotter_car {
         switch (RorL) {
             case plotter_RL.right:
                 for (let index = 0; index < 30; index++) {
-                    eureka_plotter_car.plottercar_zengo(plotter_houkou.forward, forward_D)
-                    eureka_plotter_car.plottercar_RL_cycle(360 / 30, plotter_RL.right)
+                    eureka_plotter_car.plotcar_zengo(plotter_houkou.forward, forward_D)
+                    eureka_plotter_car.plotcar_RL_cycle(360 / 30, plotter_RL.right)
                 }
                 break;
             case plotter_RL.left:
                 for (let index = 0; index < 30; index++) {
-                    eureka_plotter_car.plottercar_zengo(plotter_houkou.forward, forward_D)
-                    eureka_plotter_car.plottercar_RL_cycle(360 / 30, plotter_RL.left)
+                    eureka_plotter_car.plotcar_zengo(plotter_houkou.forward, forward_D)
+                    eureka_plotter_car.plotcar_RL_cycle(360 / 30, plotter_RL.left)
                 }
 
         }
@@ -610,10 +729,10 @@ namespace eureka_plotter_car {
         cond_degree = (1 + Deg / 1000);
     }
 
-    //% color="#3943c6" weight=55 blockId=plottercar_R_step
+    //% color="#3943c6" weight=55 blockId=plotcar_R_step
     //% block="Right_wheel move |%houkou| |%R_step|steps" group="5 Fine control"
 
-    export function plottercar_R_step(houkou: plotter_houkou, R_step: number): void {
+    export function plotcar_R_step(houkou: plotter_houkou, R_step: number): void {
         moter_number = R_step;
         switch (houkou) {
             case plotter_houkou.forward:
@@ -624,9 +743,9 @@ namespace eureka_plotter_car {
                 return;
         }
     }
-    //% color="#3943c6" weight=58 blockId=plottercar_L_step
+    //% color="#3943c6" weight=58 blockId=plotcar_L_step
     //% block="Left wheel move |%houkou| |%L_step|steps" group="5 Fine control"
-    export function plottercar_L_step(houkou: plotter_houkou, L_step: number): void {
+    export function plotcar_L_step(houkou: plotter_houkou, L_step: number): void {
         moter_number = L_step;
         switch (houkou) {
             case plotter_houkou.forward:
@@ -1015,6 +1134,11 @@ namespace plotLED_blocks {
 
 
 }
+
+
+
+
+
 
 
 
