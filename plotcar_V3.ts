@@ -341,7 +341,7 @@ namespace eureka_plotter_car {
 
 
         /*  整数部の処理　 */
-        for (let index = 0; index < kyori_seisuu; index++) {
+        for (let index = 0; index < 10; index++) {
             let Data1 = 0;
             while (Data1 < 4) {
 
