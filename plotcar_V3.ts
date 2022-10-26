@@ -14,9 +14,9 @@ let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
 
-let Stepping_bit_F = 0xCCCCCCCC /* 11001100110011001100110011001100 */
-let Stepping_bit_B = 0x936C936C /* 10010011011011001001001101101100 */
-let original_bit = 0x8000     /*           000000001000000000000000 */
+let Stepping_bit_F = 3435973836 /* 11001100110011001100110011001100 */
+let Stepping_bit_B = 3435973836 /* 10010011011011001001001101101100 */
+let original_bit = 32768     /*           000000001000000000000000 */
 let stepping_bit_R = 0;
 let stepping_bit_L = 0;
 /*
