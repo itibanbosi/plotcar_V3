@@ -20,103 +20,6 @@ let original_bit = [128,64,32,16]     /*           000000001000000000000000 */
 let stepping_bit_R = 0;
 let stepping_bit_L = 0;
 /*
-let Stepping_non = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-];
-
-let SteppingF_0 = [
-    [1, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 1],
-    [1, 0, 0, 1],
-    [1, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 1],
-];
-let SteppingF_1 = [
-    [0, 1, 1, 0],
-    [0, 0, 1, 1],
-    [1, 0, 0, 1],
-    [1, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 1],
-    [1, 0, 0, 1],
-];
-let SteppingF_2 = [
-    [0, 0, 1, 1],
-    [1, 0, 0, 1],
-    [1, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 1],
-    [1, 0, 0, 1],
-    [1, 1, 0, 0],
-];
-let SteppingF_3 = [
-    [1, 0, 0, 1],
-    [1, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 1],
-    [1, 0, 0, 1],
-    [1, 1, 0, 0],
-    [0, 1, 1, 0],
-];
-
-let SteppingB_0 = [
-    [1, 0, 0, 1],
-    [0, 0, 1, 1],
-    [0, 1, 1, 0],
-    [1, 1, 0, 0],
-    [1, 0, 0, 1],
-    [0, 0, 1, 1],
-    [0, 1, 1, 0],
-];
-let SteppingB_1 = [
-
-    [0, 0, 1, 1],
-    [0, 1, 1, 0],
-    [1, 1, 0, 0],
-    [1, 0, 0, 1],
-    [0, 0, 1, 1],
-    [0, 1, 1, 0],
-    [1, 1, 0, 0],
-];
-
-let SteppingB_2 = [
-    [0, 1, 1, 0],
-    [1, 1, 0, 0],
-    [1, 0, 0, 1],
-    [0, 0, 1, 1],
-    [0, 1, 1, 0],
-    [1, 1, 0, 0],
-    [1, 0, 0, 1],
-];
-let SteppingB_3 = [
-
-    [1, 1, 0, 0],
-    [1, 0, 0, 1],
-    [0, 0, 1, 1],
-    [0, 1, 1, 0],
-    [1, 1, 0, 0],
-    [1, 0, 0, 1],
-    [0, 0, 1, 1],
-];
-
-let Stepping_R = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-];
-
-let Stepping_L = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-];
 
 */
 
@@ -348,12 +251,12 @@ namespace eureka_plotter_car {
                 for (let n = 0; n < 4; n++) {
                     pins.digitalWritePin(outputs[0], (((Stepping_bit_F >> n) & original_bit[0])) >> 7)
                     pins.digitalWritePin(outputs[4], (((Stepping_bit_B >> n) & original_bit[0])) >> 7)
-                    pins.digitalWritePin(outputs[1], (((Stepping_bit_F >> n) & original_bit[1])) >> 7)
-                    pins.digitalWritePin(outputs[5], (((Stepping_bit_B >> n) & original_bit[1])) >> 7)
-                    pins.digitalWritePin(outputs[2], (((Stepping_bit_F >> n) & original_bit[2])) >> 7)
-                    pins.digitalWritePin(outputs[6], (((Stepping_bit_B >> n) & original_bit[2])) >> 7)
-                    pins.digitalWritePin(outputs[3], (((Stepping_bit_F >> n) & original_bit[3])) >> 7)
-                    pins.digitalWritePin(outputs[7], (((Stepping_bit_B >> n) & original_bit[3])) >> 7)
+                    pins.digitalWritePin(outputs[1], (((Stepping_bit_F >> n) & original_bit[1])) >> 6)
+                    pins.digitalWritePin(outputs[5], (((Stepping_bit_B >> n) & original_bit[1])) >> 6)
+                    pins.digitalWritePin(outputs[2], (((Stepping_bit_F >> n) & original_bit[2])) >> 5)
+                    pins.digitalWritePin(outputs[6], (((Stepping_bit_B >> n) & original_bit[2])) >> 5)
+                    pins.digitalWritePin(outputs[3], (((Stepping_bit_F >> n) & original_bit[3])) >> 4)
+                    pins.digitalWritePin(outputs[7], (((Stepping_bit_B >> n) & original_bit[3])) >> 4)
                 
 
                 for (i = 0; i < microbit_wait; i++);
