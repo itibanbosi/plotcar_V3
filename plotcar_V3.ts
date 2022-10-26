@@ -346,14 +346,14 @@ namespace eureka_plotter_car {
             while (Data1 < 4) {
 
                 for (let n = 0; n < 4; n++) {
-                    pins.digitalWritePin(outputs[0], ((Stepping_bit_F << n) & original_bit[0]) >> 7)
-                    pins.digitalWritePin(outputs[4], ((Stepping_bit_B << n) & original_bit[0]) >> 7)
-                    pins.digitalWritePin(outputs[1], ((Stepping_bit_F << n) & original_bit[1]) >> 7)
-                    pins.digitalWritePin(outputs[5], ((Stepping_bit_B << n) & original_bit[1]) >> 7)
-                    pins.digitalWritePin(outputs[2], ((Stepping_bit_F << n) & original_bit[2]) >> 7)
-                    pins.digitalWritePin(outputs[6], ((Stepping_bit_B << n) & original_bit[2]) >> 7)
-                    pins.digitalWritePin(outputs[3], ((Stepping_bit_F << n) & original_bit[3]) >> 7)
-                    pins.digitalWritePin(outputs[7], ((Stepping_bit_B << n) & original_bit[3]) >> 7)
+                    pins.digitalWritePin(outputs[0], (((Stepping_bit_F >> n) & original_bit[0])) >> 7)
+                    pins.digitalWritePin(outputs[4], (((Stepping_bit_B >> n) & original_bit[0])) >> 7)
+                    pins.digitalWritePin(outputs[1], (((Stepping_bit_F >> n) & original_bit[1])) >> 7)
+                    pins.digitalWritePin(outputs[5], (((Stepping_bit_B >> n) & original_bit[1])) >> 7)
+                    pins.digitalWritePin(outputs[2], (((Stepping_bit_F >> n) & original_bit[2])) >> 7)
+                    pins.digitalWritePin(outputs[6], (((Stepping_bit_B >> n) & original_bit[2])) >> 7)
+                    pins.digitalWritePin(outputs[3], (((Stepping_bit_F >> n) & original_bit[3])) >> 7)
+                    pins.digitalWritePin(outputs[7], (((Stepping_bit_B >> n) & original_bit[3])) >> 7)
                 
 
                 for (i = 0; i < microbit_wait; i++);
