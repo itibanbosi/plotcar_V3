@@ -252,7 +252,7 @@ namespace eureka_plotter_car {
 
 
         /* forward回の動作との比較と処理  */
-        serial.writeValue("1Tugi_L", Tugi_L);
+        /*serial.writeValue("1Tugi_L", Tugi_L);*/
         if (PremotionR == R_zengo) {
             Tugi_R = Tugi_R + 1;
         }
@@ -356,7 +356,7 @@ namespace eureka_plotter_car {
 
         /*  バックラッシュの処理　right_wheel*/
         if (PremotionR != R_zengo) {
-            music.playTone(523, music.beat(BeatFraction.Sixteenth))
+            /*music.playTone(523, music.beat(BeatFraction.Sixteenth))*/
             for (let index = 0; index < 3; index++) {
                 let Data1 = 0;
                 while (Data1 < 4) {
@@ -374,7 +374,7 @@ namespace eureka_plotter_car {
 
         /*  バックラッシュの処理　left_wheel*/
         if (PremotionL != L_zengo) {
-            music.playTone(523, music.beat(BeatFraction.Sixteenth))
+         /*   music.playTone(523, music.beat(BeatFraction.Sixteenth))*/
             for (let index = 0; index < 3; index++) {
                 let Data1 = 0;
                 while (Data1 < 4) {
