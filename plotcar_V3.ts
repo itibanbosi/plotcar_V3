@@ -27,7 +27,7 @@ let stepping_bit_L = 0;
 led.enable(false)
 
 const outputs = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7,
-DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
+DigitalPin.P16, DigitalPin.P15, DigitalPin.P14, DigitalPin.P13];
 
 for (let n = 0; n < 8; n++) {
     pins.digitalWritePin(outputs[n], 0)
