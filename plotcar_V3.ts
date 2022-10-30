@@ -163,7 +163,7 @@ namespace eureka_plotter_car {
                 outputsL = [DigitalPin.P16, DigitalPin.P15, DigitalPin.P14, DigitalPin.P13];
                 break;
             case 2:
-                outputsR = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
+                outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
         }
 
 
