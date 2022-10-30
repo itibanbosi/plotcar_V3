@@ -26,11 +26,12 @@ let stepping_bit_L = 0;
 //LED不使用
 led.enable(false)
 
-const outputs = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7,
-DigitalPin.P16, DigitalPin.P15, DigitalPin.P14, DigitalPin.P13];
+let outputsR = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7]
+let outputsL = [DigitalPin.P16, DigitalPin.P15, DigitalPin.P14, DigitalPin.P13];
 
-for (let n = 0; n < 8; n++) {
-    pins.digitalWritePin(outputs[n], 0)
+for (let n = 0; n < 4; n++) {
+    pins.digitalWritePin(outputsR[n], 0)
+    pins.digitalWritePin(outputsL[n],0)
 }
 
 let moter_number = 0;
@@ -147,7 +148,26 @@ namespace eureka_plotter_car {
 
     function moter(kyori: number, R_zengo: number, L_zengo: number) {
         led.enable(false);
+
         let i = 0;
+
+        switch (R_zengo){
+            case 1:
+                outputsR = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7]
+                break;
+            case 2:
+                outputsR = [DigitalPin.P7, DigitalPin.P6, DigitalPin.P4, DigitalPin.P3]
+        }
+        switch (L_zengo) {
+            case 1:
+                outputsL = [DigitalPin.P16, DigitalPin.P15, DigitalPin.P14, DigitalPin.P13];
+                break;
+            case 2:
+                outputsR = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
+        }
+
+
+
         /* 端数の計算計算  */
 
         let kyori_hasuu = kyori % 1;
@@ -220,8 +240,8 @@ namespace eureka_plotter_car {
                 for (let n = 0; n < 4; n++) {
                     for (let m = 0; m<4 ; m++){
 
-                    pins.digitalWritePin(outputs[m], (((stepping_bit_L >> n) & original_bit >> m)) >> (7 - m))
-                    pins.digitalWritePin(outputs[m+4], (((stepping_bit_R >> n) & original_bit >> m)) >> (7 - m))
+                    pins.digitalWritePin(outputsL[m], (((stepping_bit_L >> n) & original_bit >> m)) >> (7 - m))
+                    pins.digitalWritePin(outputsR[m], (((stepping_bit_R >> n) & original_bit >> m)) >> (7 - m))
                     }
                 for (i = 0; i < microbit_wait; i++);
                 {
