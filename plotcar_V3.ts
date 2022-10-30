@@ -153,17 +153,17 @@ namespace eureka_plotter_car {
 
         switch (R_zengo){
             case 1:
-                outputsR = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7]
+                outputsR = [DigitalPin.P7, DigitalPin.P6, DigitalPin.P4, DigitalPin.P3]
                 break;
             case 2:
-                outputsR = [DigitalPin.P7, DigitalPin.P6, DigitalPin.P4, DigitalPin.P3]
+                outputsR = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7]
         }
         switch (L_zengo) {
             case 1:
-                outputsL = [DigitalPin.P16, DigitalPin.P15, DigitalPin.P14, DigitalPin.P13];
+                outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
                 break;
             case 2:
-                outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
+                outputsL = [DigitalPin.P16, DigitalPin.P15, DigitalPin.P14, DigitalPin.P13];
         }
 
 
