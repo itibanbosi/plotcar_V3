@@ -14,6 +14,7 @@ let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
 
+let Stepping_bit0 = 0
 let Stepping_bit1 = 50745 /* 1100011000111001 */
 let Stepping_bit2 = 37740 /* 1001001101101100 */
 
@@ -153,7 +154,11 @@ namespace eureka_plotter_car {
 
         let i = 0;
 
+        /* 前後によるビット操作　*/
         switch (R_zengo){
+            case 1:
+                Stepping_bit_R = Stepping_bit0
+                break;
             case 1:
                 Stepping_bit_R = Stepping_bit1
                 break;
@@ -162,6 +167,9 @@ namespace eureka_plotter_car {
                 break;
         }
         switch (L_zengo) {
+            case 0:
+                Stepping_bit_L = Stepping_bit0
+                break;
             case 1:
                 Stepping_bit_L = Stepping_bit1;
                 break;
@@ -172,11 +180,11 @@ namespace eureka_plotter_car {
 
 
 
-        /* 端数の計算  */
+        /* 整数部と端数の計算  */
 
         let kyori_hasuu = kyori % 1;
         /*serial.writeValue("kyori_hasuu", kyori_hasuu);*/
-        let kyori_seisuu = Math.floor(kyori);
+        let kyori_seisuu = Math.floor(kyori/4);
         /*    serial.writeValue("kyori_seisuu", kyori_seisuu);*/
 
 
@@ -197,36 +205,6 @@ namespace eureka_plotter_car {
                 }
             Data1 = Data1 + 1;
             }
-        }
-
-
-
-    }
-
-
-    //% color="#009CA0" weight=96 blockId=eureka_relay block="pen |%mode| " group="1 Control Pen"
-    export function plotcar_pen(mode: pen_updown) {
-        if (mode == pen_updown.up) {
-            pins.servoWritePin(AnalogPin.P8, 90);
-            basic.pause(1000);
-        }
-        if (mode == pen_updown.down) {
-            pins.servoWritePin(AnalogPin.P8, 0);
-            basic.pause(100);
-        }
-
-    }
-
-    //% color="#ff1493" weight=90 blockId=eureka_relay2 block="New_pen |%mode| " group="1 Control Pen"
-    export function plotcar_pen2(mode: pen_updown) {
-        if (mode == pen_updown.up) {
-            pins.servoWritePin(AnalogPin.P8, 90);
-            basic.pause(1000);
-        }
-
-        if (mode == pen_updown.down) {
-            pins.servoWritePin(AnalogPin.P8, 45);
-            basic.pause(100);
         }
     }
 
@@ -260,6 +238,34 @@ namespace eureka_plotter_car {
                 break;
         }
     }
+
+
+    //% color="#009CA0" weight=96 blockId=eureka_relay block="pen |%mode| " group="1 Control Pen"
+    export function plotcar_pen(mode: pen_updown) {
+        if (mode == pen_updown.up) {
+            pins.servoWritePin(AnalogPin.P8, 90);
+            basic.pause(1000);
+        }
+        if (mode == pen_updown.down) {
+            pins.servoWritePin(AnalogPin.P8, 0);
+            basic.pause(100);
+        }
+
+    }
+
+    //% color="#ff1493" weight=90 blockId=eureka_relay2 block="New_pen |%mode| " group="1 Control Pen"
+    export function plotcar_pen2(mode: pen_updown) {
+        if (mode == pen_updown.up) {
+            pins.servoWritePin(AnalogPin.P8, 90);
+            basic.pause(1000);
+        }
+
+        if (mode == pen_updown.down) {
+            pins.servoWritePin(AnalogPin.P8, 45);
+            basic.pause(100);
+        }
+    }
+
 
 
     //% color="#ff4940" weight=71 blockId=plotcar_rest
