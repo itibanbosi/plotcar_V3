@@ -14,18 +14,15 @@ let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
 
+/*ステッピングモーターのビット操作用変数 */
 let Stepping_bit0 = 0
-/*let Stepping_bit1 = 50745 /* 1100011000111001 */
-/*let Stepping_bit2 = 37740 /* 1001001101101100 */
 let Stepping_bit1 = 640569 /* 10011100011000111001 */
 let Stepping_bit2 = 824172 /* 11001001001101101100 */
-
 let original_bit = 32768     /* 1000000000000000 */
 let Stepping_bit_R = 0;
 let Stepping_bit_L = 0;
-/*
-
-*/
+let shift_R = 0;
+let shift_L = 0;
 
 //LED不使用
 led.enable(false)
@@ -159,21 +156,21 @@ namespace eureka_plotter_car {
                 Stepping_bit_R = Stepping_bit0
                 break;
             case 1:
-                Stepping_bit_R = Stepping_bit1
+                Stepping_bit_R = Stepping_bit1 >> (shift_R+1)
                 break;
             case 2:
-                Stepping_bit_R = Stepping_bit2
+                Stepping_bit_R = Stepping_bit2 << (shift_R+1)
                 break;
         }
         switch (L_zengo) {
             case 0:
-                Stepping_bit_L = Stepping_bit0
+                Stepping_bit_L = Stepping_bit0 
                 break;
             case 1:
-                Stepping_bit_L = Stepping_bit1
+                Stepping_bit_L = Stepping_bit1 >> (shift_R + 1)
                 break;
             case 2:
-                Stepping_bit_L = Stepping_bit2
+                Stepping_bit_L = Stepping_bit2 << (shift_R + 1)
                 break;
         }
 
@@ -199,7 +196,12 @@ namespace eureka_plotter_car {
                 {
                 }
             }
+            shift_L = index
+            shift_R = index
         }
+
+
+
     }
 
     //% color="#3943c6" weight=80 blockId=plotcar_zengo
