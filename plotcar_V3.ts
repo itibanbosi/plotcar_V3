@@ -14,10 +14,11 @@ let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
 
-let Stepping_bit1 = 37740 /* 1001001101101100 */
-let Stepping_bit2 = 50745 /* 1100011000111001 */
+let Stepping_bit1 = 50745 /* 1100011000111001 */
+let Stepping_bit2 = 37740 /* 1001001101101100 */
 
-let original_bit = 8     /* 0000000000001000 */
+
+let original_bit = 32768     /* 1000000000000000 */
 let Stepping_bit_R = 0;
 let Stepping_bit_L = 0;
 /*
@@ -27,7 +28,7 @@ let Stepping_bit_L = 0;
 //LED不使用
 led.enable(false)
 
-let outputsR = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7]
+let outputsR = [DigitalPin.P7, DigitalPin.P6, DigitalPin.P4, DigitalPin.P3]
 let outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
 
 for (let n = 0; n < 4; n++) {
@@ -187,8 +188,8 @@ namespace eureka_plotter_car {
                 for (let n = 0; n < 4; n++) {
                     for (let m = 0; m<4 ; m++){
 
-                        pins.digitalWritePin(outputsL[m], (((Stepping_bit1 >> n*4)  & (original_bit >> m)) >> (4 - m)));
-                        pins.digitalWritePin(outputsR[m], (((Stepping_bit2 >> n*4)  & (original_bit >> m)) >> (4 - m)));
+                        pins.digitalWritePin(outputsL[m], ((Stepping_bit1   & (original_bit >> m+n*4)) >> (16-m+n*4)));
+                        pins.digitalWritePin(outputsR[m], ((Stepping_bit2   & (original_bit >> m+n*4)) >> (16-m+n*4)));
                     }
                 for (i = 0; i < microbit_wait; i++);
                 {
