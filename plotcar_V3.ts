@@ -16,7 +16,7 @@ let microbit_wait = 750;
 
 let Stepping_bit_F = 37740 /* 1001001101101100 */
 let Stepping_bit_B = 52428 /* 1100110011001100 */
-let original_bit = 128     /*           000000001000000000000000 */
+let original_bit = 128     /* 0000000010000000 */
 let stepping_bit_R = 0;
 let stepping_bit_L = 0;
 /*
