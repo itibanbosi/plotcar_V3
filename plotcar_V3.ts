@@ -169,10 +169,10 @@ namespace eureka_plotter_car {
                 Stepping_bit_L = Stepping_bit0
                 break;
             case 1:
-                Stepping_bit_L = Stepping_bit1;
+                Stepping_bit_L = Stepping_bit1
                 break;
             case 2:
-                Stepping_bit_L = Stepping_bit2;
+                Stepping_bit_L = Stepping_bit2
                 break;
         }
 
@@ -188,7 +188,6 @@ namespace eureka_plotter_car {
 
         /*  整数部の処理　 */
         for (let index = 0; index < kyori_seisuu; index++) {
-            let Data1 = 0;
                 for (let n = 0; n < 4; n++) {
                     for (let m = 0; m<4 ; m++){
 
