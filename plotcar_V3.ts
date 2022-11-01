@@ -153,7 +153,7 @@ namespace eureka_plotter_car {
 
         switch (R_zengo){
             case 1:
-                let Stepping_bit_R = Stepping_bit
+                Stepping_bit_R = Stepping_bit
                 break;
             case 2:
                 Stepping_bit_R = ~Stepping_bit
@@ -161,7 +161,7 @@ namespace eureka_plotter_car {
         }
         switch (L_zengo) {
             case 1:
-                let Stepping_bit_L = ~Stepping_bit;
+                Stepping_bit_L = ~Stepping_bit;
                 break;
             case 2:
                 Stepping_bit_L = Stepping_bit;
@@ -170,7 +170,7 @@ namespace eureka_plotter_car {
 
 
 
-        /* 端数の計算計算  */
+        /* 端数の計算  */
 
         let kyori_hasuu = kyori % 1;
         /*serial.writeValue("kyori_hasuu", kyori_hasuu);*/
