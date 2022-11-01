@@ -14,7 +14,7 @@ let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
 
-let Stepping_bit_F = 37740 /* 1001001101101100 */
+let Stepping_bit_F = 2473366380 /* 1001001101101100 */
 let Stepping_bit_B = 52428 /* 1100110011001100 */
 let original_bit = 128     /* 0000000010000000 */
 let stepping_bit_R = 0;
@@ -175,62 +175,6 @@ namespace eureka_plotter_car {
         let kyori_seisuu = Math.floor(kyori);
         /*    serial.writeValue("kyori_seisuu", kyori_seisuu);*/
 
-        /*右ステッピングの処理*/
-        switch (R_zengo) {
-            case 0:
-                stepping_bit_R = 0;
-                break;
-            case 1:
-                stepping_bit_R = Stepping_bit_B
-                /*
-                    stepping_bit_R = (Stepping_bit_B << Tugi_R );
-    
-                    if (Tugi_R == 0) {
-                        Stepping_R = SteppingB_0
-                    }
-                    if (Tugi_R == 1) {
-                        Stepping_R = SteppingB_1
-                    }
-                    if (Tugi_R == 2) {
-                        Stepping_R = SteppingB_2
-                    }
-                    if (Tugi_R == 3) {
-                        Stepping_R = SteppingB_3
-                    }
-                    */
-                break;
-            case 2:
-                stepping_bit_R = Stepping_bit_F
-
-                /*            if (Tugi_R == 0) {
-                                    Stepping_R = SteppingF_0
-                                }
-                                if (Tugi_R == 1) {
-                                    Stepping_R = SteppingF_1
-                                }
-                                if (Tugi_R == 2) {
-                                    Stepping_R = SteppingF_2
-                                }
-                                if (Tugi_R == 3) {
-                                    Stepping_R = SteppingF_3
-                                }
-                                */
-                break;
-
-        }
-
-        /*左ステッピングの処理*/
-        switch (L_zengo) {
-            case 0:
-                stepping_bit_L = 0;
-                break;
-            case 1:
-                stepping_bit_L = Stepping_bit_F
-                break;
-            case 2:
-                stepping_bit_L = Stepping_bit_B
-                break;
-        }
 
         /*  整数部の処理　 */
         for (let index = 0; index < kyori_seisuu; index++) {
@@ -252,118 +196,6 @@ namespace eureka_plotter_car {
         }
 
 
-        /*
-        
-        
-                /* forward回の動作との比較と処理  
-                /*serial.writeValue("1Tugi_L", Tugi_L);
-                if (PremotionR == R_zengo) {
-                    Tugi_R = Tugi_R + 1;
-                }
-                if (PremotionR > R_zengo) {
-                    Tugi_R = 3 - Tugi_R + 1;
-                }
-                if (PremotionR < R_zengo) {
-                    Tugi_R = 3 - Tugi_R + 1;
-                }
-        
-                if (PremotionL == L_zengo) {
-                    Tugi_L = Tugi_L + 1;
-                }
-                if (PremotionL > L_zengo) {
-                    Tugi_L = 3 - Tugi_L + 1;
-                }
-                if (PremotionL < L_zengo) {
-                    Tugi_L = 3 - Tugi_L + 1;
-                }
-        
-        
-                /*   次のstep
-                Tugi_L = (Tugi_L) % 4;
-                Tugi_R = (Tugi_R) % 4;
-        
-                /*右ステッピングの処理
-                switch (R_zengo) {
-                    case 0:
-                        stepping_bit_R = 0;
-                        break;
-                    case 1:
-        
-                        stepping_bit_R = (Stepping_bit_B << Tugi_R );
-        
-        /*                if (Tugi_R == 0) {
-                            Stepping_R = SteppingB_0
-                        }
-                        if (Tugi_R == 1) {
-                            Stepping_R = SteppingB_1
-                        }
-                        if (Tugi_R == 2) {
-                            Stepping_R = SteppingB_2
-                        }
-                        if (Tugi_R == 3) {
-                            Stepping_R = SteppingB_3
-                        }
-                        break;
-                    case 2:
-                        stepping_bit_R = (Stepping_bit_F >> Tugi_R );
-        
-        /*            if (Tugi_R == 0) {
-                            Stepping_R = SteppingF_0
-                        }
-                        if (Tugi_R == 1) {
-                            Stepping_R = SteppingF_1
-                        }
-                        if (Tugi_R == 2) {
-                            Stepping_R = SteppingF_2
-                        }
-                        if (Tugi_R == 3) {
-                            Stepping_R = SteppingF_3
-                        }
-                        
-                        break;
-        
-                }
-                Stepping_L = SteppingF_0
-                /*左ステッピングの処理
-                switch (L_zengo) {
-                    case 0:
-                        stepping_bit_L = 0;
-                        break;
-                    case 1:
-                        stepping_bit_L = (Stepping_bit_F >> Tugi_L );
-        
-        /*            if (Tugi_L == 0) {
-                            Stepping_L = SteppingF_0
-                        }
-                        if (Tugi_L == 1) {
-                            Stepping_L = SteppingF_1
-                        }
-                        if (Tugi_L == 2) {
-                            Stepping_L = SteppingF_2
-                        }
-                        if (Tugi_L == 3) {
-                            Stepping_L = SteppingF_3
-                        }
-                        
-                        break;
-                    case 2:
-                        stepping_bit_L = (Stepping_bit_B << Tugi_L );
-        
-        /*            if (Tugi_L == 0) {
-                            Stepping_L = SteppingB_0
-                        }
-                        if (Tugi_L == 1) {
-                            Stepping_L = SteppingB_1
-                        }
-                        if (Tugi_L == 2) {
-                            Stepping_L = SteppingB_2
-                        }
-                        if (Tugi_L == 3) {
-                            Stepping_L = SteppingB_3
-                        }
-                        
-                        break;
-                }
         
                 /*  バックラッシュの処理　right_wheel
                 if (PremotionR != R_zengo) {
