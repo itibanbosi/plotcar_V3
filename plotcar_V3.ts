@@ -15,7 +15,7 @@ let cond_degree = 1;
 let microbit_wait = 750;
 
 let Stepping_bit1 = 37740 /* 1001001101101100 */
-let Stepping_bit2 = 14025 /* 1001001101101100 */
+let Stepping_bit2 = 14025 /* 0011011011001001 */
 
 let original_bit = 128     /* 0000000010000000 */
 let Stepping_bit_R = 0;
@@ -28,7 +28,7 @@ let Stepping_bit_L = 0;
 led.enable(false)
 
 let outputsR = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7]
-let outputsL = [DigitalPin.P16, DigitalPin.P15, DigitalPin.P14, DigitalPin.P13];
+let outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
 
 for (let n = 0; n < 4; n++) {
     pins.digitalWritePin(outputsR[n], 0)
