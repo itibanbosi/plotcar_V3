@@ -15,7 +15,7 @@ let cond_degree = 1;
 let microbit_wait = 750;
 
 let Stepping_bit1 = 37740 /* 1001001101101100 */
-let Stepping_bit2 = 14025 /* 0011011011001001 */
+let Stepping_bit2 = 50745 /* 1100011000111001 */
 
 let original_bit = 128     /* 0000000010000000 */
 let Stepping_bit_R = 0;
@@ -199,82 +199,6 @@ namespace eureka_plotter_car {
         }
 
 
-        
-                /*  バックラッシュの処理　right_wheel
-                if (PremotionR != R_zengo) {
-                    /*music.playTone(523, music.beat(BeatFraction.Sixteenth))
-                    for (let index = 0; index < 3; index++) {
-                        let Data1 = 0;
-                        while (Data1 < 4) {
-                            for (let n = 0; n < 4; n++) {
-                                pins.digitalWritePin(outputs[n], ((stepping_bit_R & 128) )
-                                Data1 = Data1 + 1;
-                            }
-                            for (i = 0; i < microbit_wait; i++);
-                            {
-                            }
-                        }
-                    }
-                }
-        
-        
-                /*  バックラッシュの処理　left_wheel
-                if (PremotionL != L_zengo) {
-                 /*   music.playTone(523, music.beat(BeatFraction.Sixteenth))
-                    for (let index = 0; index < 3; index++) {
-                        let Data1 = 0;
-                        while (Data1 < 4) {
-                            for (let n = 4; n < 8; n++) {
-                                pins.digitalWritePin(outputs[n], Stepping_L[Data1][0])
-                                Data1 = Data1 + 1;
-                            }
-                            for (i = 0; i < microbit_wait; i++);
-                            {
-                            }
-                        }
-                    }
-                }
-        
-        
-                /*  整数部の処理　 
-                for (let index = 0; index < kyori_seisuu; index++) {
-                    let Data1 = 0;
-                    while (Data1 < 4) {
-        
-                        for (let n = 0; n < 4; n++) {
-                            pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
-                            pins.digitalWritePin(outputs[n+4], Stepping_L[Data1][n])
-                        }
-                        Data1 = Data1 + 1;
-                        for (i = 0; i < microbit_wait; i++);
-                        {
-                        }
-                    }
-                }
-        
-                /* 端数分の進み方と処理  
-                let Step_number = Math.floor(kyori_hasuu * 10 / 2.5);
-                let Data1 = 0;
-                while (Data1 < Step_number) {
-                    /*serial.writeValue("Data1", Data1);
-                    for (let n = 0; n < 4; n++) {
-                        pins.digitalWritePin(outputs[n], Stepping_R[Data1][n])
-                        pins.digitalWritePin(outputs[n+4], Stepping_L[Data1][n])
-                    }
-                    Data1 = Data1 + 1;
-                    for (i = 0; i < microbit_wait; i++);
-                    {
-                    }
-                }
-        
-                Tugi_L = (Tugi_L + Data1 - 1) % 4;
-                Tugi_R = (Tugi_R + Data1 - 1) % 4;
-        
-                PremotionR = R_zengo;
-                PremotionL = L_zengo;
-        
-        
-        */
 
     }
 
