@@ -14,11 +14,11 @@ let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
 
-let Stepping_bit_F = 2473366380 /* 1001001101101100 */
-let Stepping_bit_B = 52428 /* 1100110011001100 */
-let original_bit = 128     /* 0000000010000000 */
-let stepping_bit_R = 0;
-let stepping_bit_L = 0;
+let Stepping_bit = 2473366380 /* 1001001101101100 */
+
+let original_bit = 8388736     /* 0000000010000000 */
+let Stepping_bit_R = 0;
+let Stepping_bit_L = 0;
 /*
 
 */
@@ -153,17 +153,19 @@ namespace eureka_plotter_car {
 
         switch (R_zengo){
             case 1:
-                outputsR = [DigitalPin.P7, DigitalPin.P6, DigitalPin.P4, DigitalPin.P3]
+                let Stepping_bit_R = Stepping_bit
                 break;
             case 2:
-                outputsR = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7]
+                Stepping_bit_R = ~Stepping_bit
+                break;
         }
         switch (L_zengo) {
             case 1:
-                outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
+                let Stepping_bit_L = ~Stepping_bit;
                 break;
             case 2:
-                outputsL = [DigitalPin.P16, DigitalPin.P15, DigitalPin.P14, DigitalPin.P13];
+                Stepping_bit_L = Stepping_bit;
+                break;
         }
 
 
@@ -184,8 +186,8 @@ namespace eureka_plotter_car {
                 for (let n = 0; n < 4; n++) {
                     for (let m = 0; m<4 ; m++){
 
-                        pins.digitalWritePin(outputsL[m], (((Stepping_bit_F >> n) & original_bit >> m)) >> (7 - m))
-                        pins.digitalWritePin(outputsR[m], (((Stepping_bit_F >> n) & original_bit >> m)) >> (7 - m))
+                        pins.digitalWritePin(outputsL[m], (((Stepping_bit_L)  & (original_bit >> m)) >> (7 - m)));
+                        pins.digitalWritePin(outputsR[m], (((Stepping_bit_R)  & (original_bit >> m)) >> (7 - m)))
                     }
                 for (i = 0; i < microbit_wait; i++);
                 {
