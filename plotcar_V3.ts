@@ -198,8 +198,8 @@ namespace eureka_plotter_car {
             }
 
         }
-        shift_L = kyori % 4 + shift_L
-        shift_R = kyori % 4 + shift_R
+        shift_L = kyori_seisuu % 4 + shift_L
+        shift_R = kyori_seisuu % 4 + shift_R
 
 
     }
