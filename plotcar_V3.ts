@@ -152,8 +152,6 @@ namespace eureka_plotter_car {
     function moter(kyori: number, R_zengo: number, L_zengo: number) {
         led.enable(false);
 
-        let i = 0;
-
         /* 前後によるビット操作　*/
         switch (R_zengo){
             case 1:
@@ -197,7 +195,7 @@ namespace eureka_plotter_car {
                         pins.digitalWritePin(outputsL[m], ((Stepping_bit_L   & (original_bit >> m+n*4)) >> (15-m-n*4)));
                         pins.digitalWritePin(outputsR[m], ((Stepping_bit_R   & (original_bit >> m+n*4)) >> (15-m-n*4)));
                     }
-                for (i = 0; i < microbit_wait; i++);
+                for (let i = 0; i < microbit_wait; i++);
                 {
                 }
             }
