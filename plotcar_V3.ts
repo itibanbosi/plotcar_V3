@@ -33,7 +33,7 @@ let outputsR = [DigitalPin.P7, DigitalPin.P6, DigitalPin.P4, DigitalPin.P3]
 let outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
 
 for (let n = 0; n < 4; n++) {
-    pins.digitalWritePin(outputsR[n], 0)
+    pins.digitalWritePin(outputsR[n],0)
     pins.digitalWritePin(outputsL[n],0)
 }
 
@@ -184,15 +184,13 @@ namespace eureka_plotter_car {
 
         let kyori_hasuu = kyori % 1;
         /*serial.writeValue("kyori_hasuu", kyori_hasuu);*/
-        let kyori_seisuu = Math.floor(kyori/4);
+        let kyori_seisuu = Math.floor(kyori);
         /*    serial.writeValue("kyori_seisuu", kyori_seisuu);*/
 
 
         /*  整数部の処理　 */
         for (let index = 0; index < kyori_seisuu; index++) {
             let Data1 = 0;
-            while (Data1 < 4) {
-
                 for (let n = 0; n < 4; n++) {
                     for (let m = 0; m<4 ; m++){
 
@@ -202,8 +200,6 @@ namespace eureka_plotter_car {
                 for (i = 0; i < microbit_wait; i++);
                 {
                 }
-                }
-            Data1 = Data1 + 1;
             }
         }
     }
