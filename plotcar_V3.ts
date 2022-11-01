@@ -14,7 +14,8 @@ let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
 
-let Stepping_bit = 37740 /* 1001001101101100 */
+let Stepping_bit1 = 37740 /* 1001001101101100 */
+let Stepping_bit2 = 14025 /* ~1001001101101100 */
 
 let original_bit = 128     /* 0000000010000000 */
 let Stepping_bit_R = 0;
@@ -153,18 +154,18 @@ namespace eureka_plotter_car {
 
         switch (R_zengo){
             case 1:
-                Stepping_bit_R = Stepping_bit
+                Stepping_bit_R = Stepping_bit1
                 break;
             case 2:
-                Stepping_bit_R = ~Stepping_bit
+                Stepping_bit_R = ~Stepping_bit2
                 break;
         }
         switch (L_zengo) {
             case 1:
-                Stepping_bit_L = ~Stepping_bit;
+                Stepping_bit_L = ~Stepping_bit2;
                 break;
             case 2:
-                Stepping_bit_L = Stepping_bit;
+                Stepping_bit_L = Stepping_bit1;
                 break;
         }
 
