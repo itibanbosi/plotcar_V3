@@ -17,7 +17,7 @@ let microbit_wait = 750;
 let Stepping_bit1 = 37740 /* 1001001101101100 */
 let Stepping_bit2 = 50745 /* 1100011000111001 */
 
-let original_bit = 128     /* 0000000010000000 */
+let original_bit = 8     /* 0000000000001000 */
 let Stepping_bit_R = 0;
 let Stepping_bit_L = 0;
 /*
@@ -187,8 +187,8 @@ namespace eureka_plotter_car {
                 for (let n = 0; n < 4; n++) {
                     for (let m = 0; m<4 ; m++){
 
-                        pins.digitalWritePin(outputsL[m], (((Stepping_bit1 >> n*4)  & (original_bit >> m)) >> (7 - m)));
-                        pins.digitalWritePin(outputsR[m], (((Stepping_bit2 >> n*4)  & (original_bit >> m)) >> (7 - m)));
+                        pins.digitalWritePin(outputsL[m], (((Stepping_bit1 >> n*4)  & (original_bit >> m)) >> (4 - m)));
+                        pins.digitalWritePin(outputsR[m], (((Stepping_bit2 >> n*4)  & (original_bit >> m)) >> (4 - m)));
                     }
                 for (i = 0; i < microbit_wait; i++);
                 {
