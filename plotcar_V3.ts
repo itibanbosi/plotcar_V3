@@ -188,8 +188,8 @@ namespace eureka_plotter_car {
                 for (let n = 0; n < 4; n++) {
                     for (let m = 0; m<4 ; m++){
 
-                        pins.digitalWritePin(outputsL[m], ((Stepping_bit1   & (original_bit >> m+n*4)) >> (15-m+n*4)));
-                        pins.digitalWritePin(outputsR[m], ((Stepping_bit2   & (original_bit >> m+n*4)) >> (15-m+n*4)));
+                        pins.digitalWritePin(outputsL[m], ((Stepping_bit1   & (original_bit >> m+n*4)) >> (15-m-n*4)));
+                        pins.digitalWritePin(outputsR[m], ((Stepping_bit2   & (original_bit >> m+n*4)) >> (15-m-n*4)));
                     }
                 for (i = 0; i < microbit_wait; i++);
                 {
