@@ -157,7 +157,7 @@ namespace eureka_plotter_car {
                 Stepping_bit_R = Stepping_bit1
                 break;
             case 2:
-                Stepping_bit_R = Stepping_bit1
+                Stepping_bit_R = Stepping_bit2
                 break;
         }
         switch (L_zengo) {
@@ -165,7 +165,7 @@ namespace eureka_plotter_car {
                 Stepping_bit_L = Stepping_bit2;
                 break;
             case 2:
-                Stepping_bit_L = Stepping_bit2;
+                Stepping_bit_L = Stepping_bit1;
                 break;
         }
 
