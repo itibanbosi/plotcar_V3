@@ -17,7 +17,7 @@ let microbit_wait = 750;
 /*ステッピングモーターのビット操作用変数 */
 let Stepping_bit0 = 0
 let Stepping_bit1 = 3325675065 /* 10011100011000111001 */
-let Stepping_bit2 = 824172 /* 11001001001101101100 */
+let Stepping_bit2 = 2473366380 /* 11001001001101101100 */
 let original_bit = 32768     /* 1000000000000000 */
 let Stepping_bit_R = 0;
 let Stepping_bit_L = 0;
@@ -156,7 +156,7 @@ namespace eureka_plotter_car {
                 Stepping_bit_R = Stepping_bit0
                 break;
             case 1:
-                Stepping_bit_R = (Stepping_bit1 >> (shift_R+1))
+                Stepping_bit_R = (Stepping_bit1 >> ((shift_R+1)%4*4))
                 break;
             case 2:
                 Stepping_bit_R = (Stepping_bit2 << (shift_R+1))
@@ -167,7 +167,7 @@ namespace eureka_plotter_car {
                 Stepping_bit_L = Stepping_bit0 
                 break;
             case 1:
-                Stepping_bit_L = (Stepping_bit1 >> (shift_L + 1))
+                Stepping_bit_L = (Stepping_bit1 >> ((shift_L + 1) % 4 * 4))
                 break;
             case 2:
                 Stepping_bit_L = (Stepping_bit2 << (shift_L + 1))
