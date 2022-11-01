@@ -181,11 +181,11 @@ namespace eureka_plotter_car {
 
         /* 整数部と端数の計算  */
 
-        let kyori_hasuu = kyori % 1;
+/*        let kyori_hasuu = kyori % 1;
         /*serial.writeValue("kyori_hasuu", kyori_hasuu);*/
+
         let kyori_seisuu = Math.floor(kyori);
         /*    serial.writeValue("kyori_seisuu", kyori_seisuu);*/
-
 
         /*  整数部の処理　 */
         for (let index = 0; index < kyori_seisuu; index++) {
