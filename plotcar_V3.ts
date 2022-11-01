@@ -163,10 +163,10 @@ namespace eureka_plotter_car {
         }
         switch (L_zengo) {
             case 1:
-                Stepping_bit_L = Stepping_bit2;
+                Stepping_bit_L = Stepping_bit1;
                 break;
             case 2:
-                Stepping_bit_L = Stepping_bit1;
+                Stepping_bit_L = Stepping_bit2;
                 break;
         }
 
@@ -188,8 +188,8 @@ namespace eureka_plotter_car {
                 for (let n = 0; n < 4; n++) {
                     for (let m = 0; m<4 ; m++){
 
-                        pins.digitalWritePin(outputsL[m], ((Stepping_bit1   & (original_bit >> m+n*4)) >> (15-m-n*4)));
-                        pins.digitalWritePin(outputsR[m], ((Stepping_bit1   & (original_bit >> m+n*4)) >> (15-m-n*4)));
+                        pins.digitalWritePin(outputsL[m], ((Stepping_bit_L   & (original_bit >> m+n*4)) >> (15-m-n*4)));
+                        pins.digitalWritePin(outputsR[m], ((Stepping_bit_R   & (original_bit >> m+n*4)) >> (15-m-n*4)));
                     }
                 for (i = 0; i < microbit_wait; i++);
                 {
