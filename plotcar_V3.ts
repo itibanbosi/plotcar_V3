@@ -16,7 +16,7 @@ let microbit_wait = 750;
 
 /*ステッピングモーターのビット操作用変数 */
 let Stepping_bit0 = 0
-let Stepping_bit1 = 640569 /* 10011100011000111001 */
+let Stepping_bit1 = 3325675065 /* 10011100011000111001 */
 let Stepping_bit2 = 824172 /* 11001001001101101100 */
 let original_bit = 32768     /* 1000000000000000 */
 let Stepping_bit_R = 0;
