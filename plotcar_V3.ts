@@ -181,7 +181,7 @@ namespace eureka_plotter_car {
 
         /* 整数部と端数の計算  */
 
-/*        let kyori_hasuu = kyori % 1;
+        let kyori_hasuu = kyori % 1;
         /*serial.writeValue("kyori_hasuu", kyori_hasuu);*/
 
         let kyori_seisuu = Math.floor(kyori);
