@@ -154,7 +154,7 @@ namespace eureka_plotter_car {
 
         /* 前後によるビット操作　*/
         switch (R_zengo){
-            case 1:
+            case 0:
                 Stepping_bit_R = Stepping_bit0
                 break;
             case 1:
