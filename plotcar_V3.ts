@@ -156,7 +156,7 @@ namespace eureka_plotter_car {
                 Stepping_bit_R = Stepping_bit0
                 break;
             case 1:
-                Stepping_bit_R = (Stepping_bit1 >> (((5-(shift_R)%4))*4))
+                Stepping_bit_R = (Stepping_bit1 >> (((4-(shift_R)%4))*4))
                 break;
             case 2:
                 Stepping_bit_R = (Stepping_bit2 << (shift_R+1))
@@ -167,7 +167,7 @@ namespace eureka_plotter_car {
                 Stepping_bit_L = Stepping_bit0 
                 break;
             case 1:
-                Stepping_bit_L = (Stepping_bit1 >> (((5 - (shift_R) % 4)+1) * 4))
+                Stepping_bit_L = (Stepping_bit1 >> (((4 - (shift_R) % 4)) * 4))
                 break;
             case 2:
                 Stepping_bit_L = (Stepping_bit2 << (shift_L + 1))
