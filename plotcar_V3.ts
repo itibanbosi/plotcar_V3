@@ -58,7 +58,7 @@ else {
 namespace eureka_plotter_car {
 
     export enum pen_updown {
-        //% block="NewPlotcar down"
+        //% block="(NewPlotcar) down"
         down2,
         //% block="down"
         down,
