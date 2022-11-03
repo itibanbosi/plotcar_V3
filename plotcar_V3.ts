@@ -390,7 +390,7 @@ namespace eureka_plotter_car {
     //% plotcarspeed.min=-80 plotcarspeed.max=2000
     export function plotcar_speed(plotcarspeed:number) :void{
 
-        microbit_wait = microbit_wait*(100+plotcarspeed)/10
+        microbit_wait = microbit_wait*(100+plotcarspeed)/100
 
     
     }
