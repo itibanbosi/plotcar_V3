@@ -334,10 +334,10 @@ namespace eureka_plotter_car {
                 Stepping_L = Stepping_non;
                 break;
             case 1:
-                Stepping_L = SteppingF_0 << (Tugi_R * 4)
+                Stepping_L = SteppingF_0 << (Tugi_L * 4)
                 break;
             case 2:
-                Stepping_L = SteppingB_0 << (Tugi_R * 4)
+                Stepping_L = SteppingB_0 << (Tugi_L * 4)
                 break;
         }
 
