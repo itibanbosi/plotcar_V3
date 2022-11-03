@@ -130,23 +130,6 @@ namespace eureka_plotter_car {
         white
     }
 
-    export enum rotation_con {
-        //% block="a_little_more(+10)"
-        plus1,
-        //% block="more(+20)"
-        plus2,
-        //% block="more(+30)"
-        plus3,
-        //% block="less(-10)"
-        minus1,
-        //% block="less(+20)"
-        minus2,        
-        //% block="less(+30)"
-        minus3
-    }
-
-
-
     function moter(kyori: number, R_zengo: number, L_zengo: number) {
         led.enable(false);
         let i = 0;
@@ -436,14 +419,14 @@ namespace eureka_plotter_car {
     }
     //% color="#ffa800" weight=20 blockId=plotter_Distance
     //% block="Travel distance adjustment(1/1000) shorter|%Dis|longer" group="5 Fine control"
-    //% Dis.min=-30 Dis.max=30
+    //% Dis.min=-10 Dis.max=10
     export function plotter_Distance(Dis: number): void {
         cond_Distance = (1 + Dis / 1000);
     }
 
     //% color="#ffa800" weight=18 blockId=plotter_degree
     //% block="Rotation angle adjustment(1/1000) Less|%Deg|more" group="5 Fine control"
-    //% Deg.min=-30 Deg.max=30
+    //% Deg.min=-10 Deg.max=10
     export function plotter_degree(Deg: number): void {
         cond_degree = (1 + Deg / 1000);
     }
