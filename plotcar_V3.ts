@@ -322,7 +322,7 @@ namespace eureka_plotter_car {
                 break;
             case 2:
                 if (Tugi_R == 0) {
-                    Stepping_R = SteppingB_0 << (Tugi_R*4)
+                    Stepping_R = SteppingF_0 << (Tugi_R*4)
                 }
                 break;
 
@@ -334,32 +334,10 @@ namespace eureka_plotter_car {
                 Stepping_L = Stepping_non;
                 break;
             case 1:
-                if (Tugi_L == 0) {
-                    Stepping_L = SteppingF_0
-                }
-                if (Tugi_L == 1) {
-                    Stepping_L = SteppingF_1
-                }
-                if (Tugi_L == 2) {
-                    Stepping_L = SteppingF_2
-                }
-                if (Tugi_L == 3) {
-                    Stepping_L = SteppingF_3
-                }
+                Stepping_L = SteppingF_0 << (Tugi_R * 4)
                 break;
             case 2:
-                if (Tugi_L == 0) {
-                    Stepping_L = SteppingB_0
-                }
-                if (Tugi_L == 1) {
-                    Stepping_L = SteppingB_1
-                }
-                if (Tugi_L == 2) {
-                    Stepping_L = SteppingB_2
-                }
-                if (Tugi_L == 3) {
-                    Stepping_L = SteppingB_3
-                }
+                Stepping_L = SteppingB_0 << (Tugi_R * 4)
                 break;
         }
 
