@@ -387,10 +387,10 @@ namespace eureka_plotter_car {
 
 
     //% color="#ff3d03" weight=34 blockId=plotcar_speed block="motion speed fast|%plotcarspeed|slow" group="4 Default setting"
-    //% plotcarspeed.min=-80 plotcarspeed.max=2000
+    //% plotcarspeed.min=-2000 plotcarspeed.max=90
     export function plotcar_speed(plotcarspeed:number) :void{
 
-        microbit_wait = microbit_wait*(100+plotcarspeed)/100
+        microbit_wait = microbit_wait*(100-plotcarspeed)/100
 
     
     }
