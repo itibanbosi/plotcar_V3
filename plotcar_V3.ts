@@ -321,11 +321,8 @@ namespace eureka_plotter_car {
                 Stepping_R = SteppingB_0 << (Tugi_R*4)
                 break;
             case 2:
-                if (Tugi_R == 0) {
                     Stepping_R = SteppingF_0 << (Tugi_R*4)
-                }
                 break;
-
         }
         Stepping_L = SteppingF_0
         /*左ステッピングの処理*/
@@ -334,10 +331,10 @@ namespace eureka_plotter_car {
                 Stepping_L = Stepping_non;
                 break;
             case 1:
-                Stepping_L = SteppingF_0 << (Tugi_L * 4)
+                Stepping_L = SteppingF_0 << (Tugi_L * 3)
                 break;
             case 2:
-                Stepping_L = SteppingB_0 << (Tugi_L * 4)
+                Stepping_L = SteppingB_0 << (Tugi_L * 3)
                 break;
         }
 
