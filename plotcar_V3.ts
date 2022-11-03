@@ -392,15 +392,22 @@ namespace eureka_plotter_car {
         if (PremotionR != R_zengo) {
             music.playTone(523, music.beat(BeatFraction.Sixteenth))
             for (let index = 0; index < 3; index++) {
-                let Data1 = 0;
-                while (Data1 < 4) {
+                let n = 0;
+                while (n < 4) {
+                    for (let m = 0; m < 4; m++) {
+                        serial.writeLine("Stepping_L" + Stepping_L);
+                        pins.digitalWritePin(outputsR[m], (((Stepping_R >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
+                    }
+
+
+
 /*
                     pins.digitalWritePin(DigitalPin.P3, Stepping_R[Data1][0]);
                     pins.digitalWritePin(DigitalPin.P4, Stepping_R[Data1][1]);
                     pins.digitalWritePin(DigitalPin.P6, Stepping_R[Data1][2]);
                     pins.digitalWritePin(DigitalPin.P7, Stepping_R[Data1][3]);
 */
-                    Data1 = Data1 + 1;
+                    n = n + 1;
                     for (i = 0; i < microbit_wait; i++);
                     {
                     }
@@ -413,9 +420,12 @@ namespace eureka_plotter_car {
         if (PremotionL != L_zengo) {
             music.playTone(523, music.beat(BeatFraction.Sixteenth))
             for (let index = 0; index < 3; index++) {
-                let Data1 = 0;
-                while (Data1 < 4) {
-
+                let n = 0;
+                while (n < 4) {
+                    for (let m = 0; m < 4; m++) {
+                        serial.writeLine("Stepping_L" + Stepping_L);
+                        pins.digitalWritePin(outputsR[m], (((Stepping_L >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
+                    }
                     /*
                                         pins.digitalWritePin(DigitalPin.P13, Stepping_L[Data1][0]);
                                            pins.digitalWritePin(DigitalPin.P14, Stepping_L[Data1][1]);
@@ -423,7 +433,7 @@ namespace eureka_plotter_car {
                                            pins.digitalWritePin(DigitalPin.P16, Stepping_L[Data1][3]);
                     */
 
-                    Data1 = Data1 + 1;
+                    n = n + 1;
                     for (i = 0; i < microbit_wait; i++);
                     {
                     }
@@ -460,9 +470,13 @@ namespace eureka_plotter_car {
 
         /* 端数分の進み方と処理  */
         let Step_number = Math.floor(kyori_hasuu * 10 / 2.5);
-        let Data1 = 0;
-        while (Data1 < Step_number) {
-
+        let n = 0;
+        while (n < Step_number) {
+            for (let m = 0; m < 4; m++) {
+                serial.writeLine("Stepping_L" + Stepping_L);
+                pins.digitalWritePin(outputsL[m], (((Stepping_L >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
+                pins.digitalWritePin(outputsR[m], (((Stepping_R >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
+            }
             /*
                         serial.writeValue("Data1", Data1);
                            pins.digitalWritePin(DigitalPin.P3, Stepping_R[Data1][0]);
@@ -475,14 +489,14 @@ namespace eureka_plotter_car {
                            pins.digitalWritePin(DigitalPin.P16, Stepping_L[Data1][3]);
             */
 
-            Data1 = Data1 + 1;
+            n = n + 1;
             for (i = 0; i < microbit_wait; i++);
             {
             }
         }
 
-        Tugi_L = (Tugi_L + Data1 - 1) % 4;
-        Tugi_R = (Tugi_R + Data1 - 1) % 4;
+        Tugi_L = (Tugi_L + n - 1) % 4;
+        Tugi_R = (Tugi_R + n - 1) % 4;
 
         PremotionR = R_zengo;
         PremotionL = L_zengo;
