@@ -32,8 +32,8 @@ let SteppingF_3 = 160330126
 /*
 let SteppingF_0 = 0b1100011000111001110001100011
 let SteppingF_1 = 0b0110001110011100011000111001
-let SteppingF_2 = 0b0011000111001110001100011100
-let SteppingF_3 = 0b1001100011100111000110001110
+let SteppingF_2 = 0b0011100111000110001110011100
+let SteppingF_3 = 0b1001110001100011100111000110
 */
 
 
@@ -134,7 +134,7 @@ let SteppingB_3 = [
 
 let Stepping_R = 0
 let Stepping_L = 0
-let original_bit = 0b1000     /* 1000 */
+let original_bit = 8     /* 1000 */
 
 /*  
   let Stepping_R = [
