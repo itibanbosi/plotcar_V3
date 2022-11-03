@@ -395,7 +395,6 @@ namespace eureka_plotter_car {
                 let n = 0;
                 while (n < 4) {
                     for (let m = 0; m < 4; m++) {
-                        serial.writeLine("Stepping_L" + Stepping_L);
                         pins.digitalWritePin(outputsR[m], (((Stepping_R >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
                     }
 
@@ -423,8 +422,7 @@ namespace eureka_plotter_car {
                 let n = 0;
                 while (n < 4) {
                     for (let m = 0; m < 4; m++) {
-                        serial.writeLine("Stepping_L" + Stepping_L);
-                        pins.digitalWritePin(outputsR[m], (((Stepping_L >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
+                        pins.digitalWritePin(outputsL[m], (((Stepping_L >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
                     }
                     /*
                                         pins.digitalWritePin(DigitalPin.P13, Stepping_L[Data1][0]);
