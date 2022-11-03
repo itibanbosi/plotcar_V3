@@ -130,6 +130,22 @@ namespace eureka_plotter_car {
         white
     }
 
+    export enum rotation_con {
+        //% block="a_little_more(+10)"
+        plus1,
+        //% block="more(+20)"
+        plus2,
+        //% block="more(+30)"
+        plus3,
+        //% block="less(-10)"
+        minus1,
+        //% block="less(+20)"
+        minus2,        
+        //% block="less(+30)"
+        minus3
+    }
+
+
 
     function moter(kyori: number, R_zengo: number, L_zengo: number) {
         led.enable(false);
