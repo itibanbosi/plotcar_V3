@@ -22,9 +22,9 @@ let outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
 //LED不使用
 led.enable(false)
 
-basic.pause(100);
+basic.pause(300);
 pins.servoWritePin(AnalogPin.P8, 80);
-basic.pause(100);
+basic.pause(300);
 
 for (let n = 0; n < 4; n++) {
     pins.digitalWritePin(outputsR[n], 0)
@@ -189,6 +189,7 @@ namespace eureka_plotter_car {
         /*  バックラッシュの処理　right_wheel*/
         if (PremotionR != R_zengo) {
             music.playTone(523, music.beat(BeatFraction.Sixteenth))
+            basic.pause(300);
             for (let index = 0; index < 3; index++) {
                 let n = 0;
                 while (n < 4) {
@@ -201,12 +202,14 @@ namespace eureka_plotter_car {
                     }
                 }
             }
+            basic.pause(200);
         }
 
 
         /*  バックラッシュの処理　left_wheel*/
         if (PremotionL != L_zengo) {
             music.playTone(523, music.beat(BeatFraction.Sixteenth))
+            basic.pause(300);
             for (let index = 0; index < 3; index++) {
                 let n = 0;
                 while (n < 4) {
@@ -219,6 +222,7 @@ namespace eureka_plotter_car {
                     }
                 }
             }
+
         }
 
 
@@ -270,7 +274,7 @@ namespace eureka_plotter_car {
         }
         if (mode == pen_updown.down) {
             pins.servoWritePin(AnalogPin.P8, 0);
-            basic.pause(100);
+            basic.pause(300);
         }
 
     }
@@ -284,7 +288,7 @@ namespace eureka_plotter_car {
 
         if (mode == pen_updown.down) {
             pins.servoWritePin(AnalogPin.P8, 45);
-            basic.pause(100);
+            basic.pause(300);
         }
     }
 
