@@ -33,7 +33,7 @@ for (let n = 0; n < 4; n++) {
 
 let moter_number = 0;
 let io_neo = neopixel.create(DigitalPin.P9, 4, NeoPixelMode.RGB);
-io_neo.setBrightness(100)
+io_neo.setBrightness(80)
 io_neo.easeBrightness()
 io_neo.showRainbow(1, 360)
 
