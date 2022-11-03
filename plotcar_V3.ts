@@ -25,9 +25,7 @@ let Stepping_non = 0
 ]; */
 
 let SteppingF_0 = 207854691
-let SteppingF_1 = 104449593
-let SteppingF_2 = 60580764
-let SteppingF_3 = 163985862
+
 
 /*
 let SteppingF_0 = 0b1100011000111001110001100011
@@ -78,9 +76,7 @@ let SteppingF_3 = [
 
 
 let SteppingB_0 = 154585398
-let SteppingB_1 = 57447276
-let SteppingB_2 = 113850057
-let SteppingB_3 = 210988179
+
 
 /*
 let SteppingB_0 = 0b1001001101101100100100110110
