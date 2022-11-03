@@ -106,20 +106,7 @@ namespace eureka_plotter_car {
         //% block="Low_sensitivity",
         Low_sensitivity
     }
-    export enum microbit_version {
-        //% block="Version1"
-        Version1,
-        //% block="Version2"
-        Version2,
-        //% block="Test_A"
-        Test_A,
-        //% block="Test_B"
-        Test_B,
-        //% block="V1_Turbo"
-        V1_Turbo,
-        //% block="V2_Turbo"
-        V2_Turbo
-    }
+
 
     export enum onoff {
         //% block="ON"
@@ -399,30 +386,13 @@ namespace eureka_plotter_car {
 
 
 
-    //% color="#ff3d03" weight=34 blockId=Microbit_Version_info block="micro:bit_Version |%Version_info|" group="4 Default setting"
-    export function microbit_version_info(Version_info: microbit_version) {
-        switch (Version_info) {
-            case microbit_version.Version1:
-                microbit_wait = 900;
-                break;
-            case microbit_version.Version2:
-                microbit_wait = 5000;
-                break;
-            case microbit_version.Test_A:
-                microbit_wait = 10000;
-                break;
-            case microbit_version.Test_B:
-                microbit_wait = 900000;
-                break;
-            case microbit_version.V1_Turbo:
-                microbit_wait = 600;
-                break;
-            case microbit_version.V2_Turbo:
-                microbit_wait = 2000;
-                break;
+    //% color="#ff3d03" weight=34 blockId=plotcar_speed block="motion speed slow|%plotcarspeed|fast" group="4 Default setting"
+    //% plotcarspeed.min=-100 plotcarspeed.max=100
+    export function poltcar_speed(plotcarspeed:number) :void{
 
+        microbit_wait = microbit_wait*plotcarspeed
 
-        }
+    
     }
 
 
