@@ -7,28 +7,15 @@ let T1 = 0;
 let PremotionR = 0;
 let PremotionL = 0;
 let con_kaiten = 1.61;
-
-
-
 let cond_Distance = 1;
 let cond_degree = 1;
 let microbit_wait = 750;
-
-
 let Stepping_non = 0
-
-
 let SteppingF_0 = 207854691 /* 0b1100011000111001110001100011 */
-
-
 let SteppingB_0 = 154585398  /*0b1001001101101100100100110110 */
-
-
-
 let Stepping_R = 0
 let Stepping_L = 0
 let original_bit = 8     /* 1000 */
-
 let outputsR = [DigitalPin.P3, DigitalPin.P4, DigitalPin.P6, DigitalPin.P7]
 let outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
 
@@ -55,12 +42,9 @@ for (let index = 0; index < 1000; index++) {
 //basic.showNumber(input.runningTimeMicros() - first);
 if ((input.runningTimeMicros() - first) < 2000) {
     microbit_wait = 4500;
-    //    basic.showString("V2");
-
 }
 else {
     microbit_wait = 900;
-    //    basic.showString("V1");
 }
 
 
@@ -284,8 +268,6 @@ namespace eureka_plotter_car {
             pins.digitalWritePin(outputsR[n], 0)
             pins.digitalWritePin(outputsL[n], 0)
         }
-
-
     }
 
 
