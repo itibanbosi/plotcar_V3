@@ -286,7 +286,7 @@ namespace eureka_plotter_car {
         }
 
     }
-
+/*
     //% color="#ff1493" weight=90 blockId=eureka_relay2 block="New_pen |%mode| " group="1 Control Pen"
     export function plottercar_pen2(mode: pen_updown) {
         if (mode == pen_updown.up) {
@@ -299,7 +299,7 @@ namespace eureka_plotter_car {
             basic.pause(300);
         }
     }
-
+*/
     //% color="#3943c6" weight=80 blockId=plottercar_zengo
     //% block="Move |%zengo| |%F_cm| cm" group="2 Basic control"
     export function plottercar_zengo(zengo: plotter_houkou, F_cm: number): void {
