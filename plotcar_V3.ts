@@ -419,14 +419,14 @@ namespace eureka_plotter_car {
     }
     //% color="#ffa800" weight=20 blockId=plotter_Distance
     //% block="Travel distance adjustment(1/1000) shorter|%Dis|longer" group="5 Fine control"
-    //% Dis.min=-10 Dis.max=10
+    //% Dis.min=-20 Dis.max=20
     export function plotter_Distance(Dis: number): void {
         cond_Distance = (1 + Dis / 1000);
     }
 
     //% color="#ffa800" weight=18 blockId=plotter_degree
     //% block="Rotation angle adjustment(1/1000) Less|%Deg|more" group="5 Fine control"
-    //% Deg.min=-10 Deg.max=10
+    //% Deg.min=-20 Deg.max=20
     export function plotter_degree(Deg: number): void {
         cond_degree = (1 + Deg / 1000);
     }
