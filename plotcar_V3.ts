@@ -23,11 +23,12 @@ let outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
 led.enable(false)
 
 basic.pause(300);
-pins.servoWritePin(AnalogPin.P8, 80);
+pins.servoWritePin(AnalogPin.P8, 70);
 basic.pause(300);
+pins.digitalWritePin(DigitalPin.P8,0);
 
 for (let n = 0; n < 4; n++) {
-    pins.digitalWritePin(outputsR[n], 0)
+    (outputsR[n], 0)
     pins.digitalWritePin(outputsL[n], 0)
 }
 
@@ -273,8 +274,9 @@ namespace eureka_plotter_car {
     //% color="#ff1493" weight=96 blockId=eureka_relay block="pen |%mode| " group="1 Control Pen"
     export function plottercar_pen(mode: pen_updown) {
         if (mode == pen_updown.up) {
-            pins.servoWritePin(AnalogPin.P8, 80);
+            pins.servoWritePin(AnalogPin.P8, 70);
             basic.pause(1000);
+            pins.digitalWritePin(DigitalPin.P8, 0)
         }
         if (mode == pen_updown.down) {
             pins.servoWritePin(AnalogPin.P8, 0);
