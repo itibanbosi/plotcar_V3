@@ -426,7 +426,7 @@ namespace eureka_plotter_car {
         for (let index = 0; index < kyori_seisuu; index++) {
             for (let n = 0; n < 4; n++) {
                 for (let m = 0; m < 4; m++) {
-
+                    serial.writeLine("" + Stepping_L);
                     pins.digitalWritePin(outputsL[m], (((Stepping_L >> 24 - n * 4) & (original_bit >> m)) >> (3-m)));
                     pins.digitalWritePin(outputsR[m], (((Stepping_R >> 24 - n * 4) & (original_bit >> m)) >> (3-m)));
                 }
