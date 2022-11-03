@@ -157,13 +157,9 @@ namespace eureka_plotter_car {
         /* 端数の計算計算  */
 
         let kyori_hasuu = kyori % 1;
-        /*serial.writeValue("kyori_hasuu", kyori_hasuu);*/
         let kyori_seisuu = Math.floor(kyori);
-        serial.writeValue("kyori_seisuu", kyori_seisuu);
-
 
         /* forward回の動作との比較と処理  */
-        /* serial.writeValue("1Tugi_L", Tugi_L);*/
         if (PremotionR == R_zengo) {
             Tugi_R = Tugi_R + 1;
         }
@@ -255,7 +251,6 @@ namespace eureka_plotter_car {
         for (let index = 0; index < kyori_seisuu; index++) {
             for (let n = 0; n < 4; n++) {
                 for (let m = 0; m < 4; m++) {
-                    serial.writeLine("Stepping_L" + Stepping_L);
                     pins.digitalWritePin(outputsL[m], (((Stepping_L >> (24 - n * 4)) & (original_bit >> m)) >> (3-m)));
                     pins.digitalWritePin(outputsR[m], (((Stepping_R >> (24 - n * 4)) & (original_bit >> m)) >> (3-m)));
                 }
@@ -271,8 +266,7 @@ namespace eureka_plotter_car {
         let n = 0;
         while (n < Step_number) {
             for (let m = 0; m < 4; m++) {
-                serial.writeLine("Stepping_L" + Stepping_L);
-                pins.digitalWritePin(outputsL[m], (((Stepping_L >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
+                 pins.digitalWritePin(outputsL[m], (((Stepping_L >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
                 pins.digitalWritePin(outputsR[m], (((Stepping_R >> (24 - n * 4)) & (original_bit >> m)) >> (3 - m)));
             }
             n = n + 1;
