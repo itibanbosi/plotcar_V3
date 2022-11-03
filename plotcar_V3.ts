@@ -286,6 +286,11 @@ namespace eureka_plotter_car {
 
         PremotionR = R_zengo;
         PremotionL = L_zengo;
+        for (let n = 0; n < 4; n++) {
+            pins.digitalWritePin(outputsR[n], 0)
+            pins.digitalWritePin(outputsL[n], 0)
+        }
+
 
     }
 
