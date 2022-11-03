@@ -153,16 +153,6 @@ for (let n = 0; n < 4; n++) {
     pins.digitalWritePin(outputsL[n], 0)
 }
 
-/*
-   pins.digitalWritePin(DigitalPin.P3, 0)
-   pins.digitalWritePin(DigitalPin.P4, 0)
-   pins.digitalWritePin(DigitalPin.P6, 0)
-   pins.digitalWritePin(DigitalPin.P7, 0)
-   pins.digitalWritePin(DigitalPin.P13, 0)
-   pins.digitalWritePin(DigitalPin.P14, 0)
-   pins.digitalWritePin(DigitalPin.P15, 0)
-   pins.digitalWritePin(DigitalPin.P16, 0)
- */
 let moter_number = 0;
 let io_neo = neopixel.create(DigitalPin.P9, 4, NeoPixelMode.RGB);
 io_neo.showRainbow(1, 360)
@@ -437,8 +427,8 @@ namespace eureka_plotter_car {
             for (let n = 0; n < 4; n++) {
                 for (let m = 0; m < 4; m++) {
 
-                    pins.digitalWritePin(outputsL[m], (((Stepping_L >> 24 - n * 4) & (original_bit >> m)) >> (m)));
-                    pins.digitalWritePin(outputsR[m], (((Stepping_R >> 24 - n * 4) & (original_bit >> m)) >> (m)));
+                    pins.digitalWritePin(outputsL[m], (((Stepping_L >> 24 - n * 4) & (original_bit >> m)) >> (3-m)));
+                    pins.digitalWritePin(outputsR[m], (((Stepping_R >> 24 - n * 4) & (original_bit >> m)) >> (3-m)));
                 }
                 for (let i = 0; i < microbit_wait; i++);
                 {
