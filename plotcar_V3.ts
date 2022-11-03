@@ -22,6 +22,10 @@ let outputsL = [DigitalPin.P13, DigitalPin.P14, DigitalPin.P15, DigitalPin.P16];
 //LED不使用
 led.enable(false)
 
+basic.pause(100);
+pins.servoWritePin(AnalogPin.P8, 80);
+basic.pause(100);
+
 for (let n = 0; n < 4; n++) {
     pins.digitalWritePin(outputsR[n], 0)
     pins.digitalWritePin(outputsL[n], 0)
@@ -30,8 +34,7 @@ for (let n = 0; n < 4; n++) {
 let moter_number = 0;
 let io_neo = neopixel.create(DigitalPin.P9, 4, NeoPixelMode.RGB);
 io_neo.showRainbow(1, 360)
-pins.servoWritePin(AnalogPin.P8, 90);
-basic.pause(100);
+
 
 //バージョンの判定
 let first = input.runningTimeMicros()
@@ -46,6 +49,7 @@ if ((input.runningTimeMicros() - first) < 2000) {
 else {
     microbit_wait = 900;
 }
+
 
 
 //% color="#3943c6" block="Plotcar Ver3.6" weight=95 icon="\uf1b9"
@@ -261,7 +265,7 @@ namespace eureka_plotter_car {
     //% color="#009CA0" weight=96 blockId=eureka_relay block="pen |%mode| " group="1 Control Pen"
     export function plottercar_pen(mode: pen_updown) {
         if (mode == pen_updown.up) {
-            pins.servoWritePin(AnalogPin.P8, 90);
+            pins.servoWritePin(AnalogPin.P8, 80);
             basic.pause(1000);
         }
         if (mode == pen_updown.down) {
@@ -274,7 +278,7 @@ namespace eureka_plotter_car {
     //% color="#ff1493" weight=90 blockId=eureka_relay2 block="New_pen |%mode| " group="1 Control Pen"
     export function plottercar_pen2(mode: pen_updown) {
         if (mode == pen_updown.up) {
-            pins.servoWritePin(AnalogPin.P8, 90);
+            pins.servoWritePin(AnalogPin.P8, 80);
             basic.pause(1000);
         }
 
@@ -384,18 +388,11 @@ namespace eureka_plotter_car {
         }
     }
 
-
-
-    //% color="#ff3d03" weight=34 blockId=plotcar_speed block="motion speed fast|%plotcarspeed|slow" group="4 Default setting"
-    //% plotcarspeed.min=-2000 plotcarspeed.max=90
+    //% color="#ff3d03" weight=34 blockId=plotcar_speed block="motion speed slow|%plotcarspeed|fast" group="4 Default setting"
+    //% plotcarspeed.min=-2000 plotcarspeed.max=70
     export function plotcar_speed(plotcarspeed:number) :void{
-
         microbit_wait = microbit_wait*(100-plotcarspeed)/100
-
-    
     }
-
-
 
     //% color="#ff3d03" weight=35 blockId=auto_led_off block="micro:bit LED |%Matrix_LED|" group="4 Default setting"
     export function auto_led_off(Matrix_LED: microbit_LED) {
