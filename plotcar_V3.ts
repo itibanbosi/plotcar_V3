@@ -58,12 +58,12 @@ else {
 namespace eureka_plotter_car {
 
     export enum pen_updown {
+        //% block="NewPlotcar down"
+        down2,
         //% block="down"
         down,
         //% block="up"
-        up,
-        //% block="NewPlotcar down"
-        down2
+        up
     }
 
     export enum plotter_houkou {
