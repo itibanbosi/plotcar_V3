@@ -61,7 +61,9 @@ namespace eureka_plotter_car {
         //% block="down"
         down,
         //% block="up"
-        up
+        up,
+        //% block="NewPlotcar down"
+        down2
     }
 
     export enum plotter_houkou {
@@ -276,6 +278,10 @@ namespace eureka_plotter_car {
         }
         if (mode == pen_updown.down) {
             pins.servoWritePin(AnalogPin.P8, 0);
+            basic.pause(300);
+        }
+        if (mode == pen_updown.down2) {
+            pins.servoWritePin(AnalogPin.P8, 45);
             basic.pause(300);
         }
 
